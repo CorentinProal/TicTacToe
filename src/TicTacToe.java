@@ -1,70 +1,91 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TicTacToe {
-    private final int SIZE = 3;
-    private Cell[][] board;
-    private Player player;
+    private TicTacToeLogic logic;
 
-    public TicTacToe() {
-        board = new Cell[SIZE][SIZE];
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
-                board[i][j] = new Cell();
-            }
-        }
-        player = new Player();
+    // Constructeurs pour les différents modes de jeu
+    public static TicTacToe createHumanVsHuman() {
+        return new TicTacToe(
+            new HumanPlayer(" X "),
+            new HumanPlayer(" O ")
+        );
+    }
+
+    public static TicTacToe createHumanVsAI() {
+        return new TicTacToe(
+            new HumanPlayer(" X "),
+            new ArtificialPlayer(" O ")
+        );
+    }
+
+    public static TicTacToe createAIVsAI() {
+        return new TicTacToe(
+            new ArtificialPlayer(" X "),
+            new ArtificialPlayer(" O ")
+        );
+    }
+
+    private TicTacToe(Player player1, Player player2) {
+        logic = new TicTacToeLogic(player1, player2);
     }
 
     public void display() {
-        String line = "-------------";
-        String bar = "|";
-        System.out.println(line);
-        for (int a = 0; a < SIZE; a++) {
-            for (int b = 0; b < SIZE; b++) {
-                System.out.print(bar);
-                System.out.print(board[a][b].getRepresentation());
+        System.out.println(" Début de la partie ! ");
+
+        Cell[][] board = logic.getBoard();
+        for (int i = 0; i < 3; i++) {
+            System.out.println("-------------");
+            for (int j = 0; j < 3; j++) {
+                System.out.print("|" + board[i][j].getRepresentation());
             }
-            System.out.println(bar);
-            System.out.println(line);
+            System.out.println("|");
+        }
+        System.out.println("-------------");
+
+        if (!logic.isOver()) {
+            System.out.println("\nAu tour du joueur" + logic.getCurrentPlayer().getRepresentation());
+            int[] move = getMoveFromPlayer();
+            logic.setOwner(move, logic.getCurrentPlayer());
+            
+            if (logic.isOver()) {
+                display();
+                System.out.println(" Le joueur " + logic.getCurrentPlayer().getRepresentation() + " a gagné ! ");
+                System.out.println(" Fin de partie ! ");
+                return;
+            }
+            
+            logic.switchPlayer();
+            display();
         }
     }
 
-    public int[] getMoveFromPlayer(){
-        Scanner scan = new Scanner(System.in);
-        int[] move = new int[2];
-        boolean niceMove = false;
-
-        while (!niceMove) {
-            try {
-                System.out.println("Entrez le numéro de ligne (o - 2) : ");
-                move[0] = scan.nextInt();
-
-                System.out.println("Entrez le numéro de colonne (o - 2) : ");
-                move[1] = scan.nextInt();
-
-                if (move[0] < 0 || move[0] >= SIZE || move[1] < 0 || move [1] >= SIZE){
-                    System.out.println("Hors Limite");
-                    continue;
-                }
-
-                if (!board[move[0]][move[1]].getRepresentation().equals("X")) {
-                    System.out.println("Déja utilisée");
-                    continue;
-                }
-
-                niceMove = true;
-            } catch (Exception e) {
-                System.out.println("Erreur");
-                scan.nextLine();
-            }
-        }
-        return move;
-    }
-
-    public void setOwner(int[] move, Player player) {
-        int row = move[0];
-        int col = move[1];
-        board[row][col].setRepresentation(player.getRepresentation());
+    public int[] getMoveFromPlayer() {
+        return logic.getCurrentPlayer().getMove(logic);
     }
 }
+
+
+/*
+Cette classe gère l'interface utilisateur du jeu TicTacToe.
+
+ATTRIBUTS :
+- logic : instance de TicTacToeLogic qui gère la logique du jeu
+
+CONSTRUCTEUR :
+- Initialise une nouvelle instance de TicTacToeLogic
+
+MÉTHODES :
+display() :
+- Affiche l'état actuel du plateau
+- Dessine l'interface graphique en mode console
+- Gère le déroulement de la partie
+- Affiche les messages pour les joueurs
+- Gère la boucle de jeu jusqu'à la fin de partie
+- Affiche le résultat final
+
+getMoveFromPlayer() :
+- Gère la saisie utilisateur
+- Vérifie la validité des entrées via TicTacToeLogic
+- Gère les erreurs de saisie
+- Retourne les coordonnées valides
+*/
