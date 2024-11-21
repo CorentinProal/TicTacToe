@@ -1,8 +1,7 @@
-package Player;
+package TicTacToe.Player;
 
-import Board.TicTacToeView;
-import Game.TicTacToeLogic;
-import Game.UserInteract;
+import TicTacToe.Board.TicTacToeView;
+import TicTacToe.Game.TicTacToeLogic;
 
 import java.util.Random;
 

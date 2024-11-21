@@ -1,8 +1,8 @@
-package Game;
+package TicTacToe.Game;
 
-import Board.Cell;
-import Board.CellState;
-import Player.Player;
+import TicTacToe.Board.Cell;
+import TicTacToe.Board.CellState;
+import TicTacToe.Player.Player;
 
 public class TicTacToeLogic {
     private final int SIZE = 3;
@@ -98,7 +98,7 @@ Cette classe gère toute la logique du jeu TicTacToe.
 
 ATTRIBUTS :
 - SIZE : constante définissant la taille du plateau (3x3)
-- board : tableau 2D de Board.Cell représentant le plateau de jeu
+- board : tableau 2D de TicTacToe.Board.Cell représentant le plateau de jeu
 - currentPlayer : référence vers le joueur actuel
 - player1 : joueur avec le symbole " X "
 - player2 : joueur avec le symbole " O "

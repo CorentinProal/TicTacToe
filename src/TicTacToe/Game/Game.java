@@ -1,6 +1,6 @@
-package Game;
+package TicTacToe.Game;
 
-import Board.TicTacToeView;
+import TicTacToe.Board.TicTacToeView;
 
 public class Game {
     public TicTacToeController createGame() {

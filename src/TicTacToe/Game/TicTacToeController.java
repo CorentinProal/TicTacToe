@@ -1,11 +1,9 @@
-package Game;
+package TicTacToe.Game;
 
-import Player.Player;
-import Player.HumanPlayer;
-import Player.ArtificialPlayer;
-import Game.TicTacToeLogic;
-import Game.UserInteract;
-import Board.TicTacToeView;
+import TicTacToe.Player.Player;
+import TicTacToe.Player.HumanPlayer;
+import TicTacToe.Player.ArtificialPlayer;
+import TicTacToe.Board.TicTacToeView;
 
 public class TicTacToeController {
     private TicTacToeLogic model;
@@ -18,38 +16,37 @@ public class TicTacToeController {
 
     public void startGame() {
         view.afficherDebutPartie();
-        
+
         while (!model.isOver()) {
             view.afficherPlateau(model.getBoard());
             view.afficherTourJoueur(model.getCurrentPlayer());
-            
+
             int[] move;
             do {
                 view.afficherDemanderLigne();
                 view.afficherDemanderColonne();
                 move = model.getCurrentPlayer().getMove(model);
-                
+
                 if (!model.isValidMove(move)) {
                     view.afficherErreurCoup();
                 }
-            } while (!model.isValidMove(move));
-            
+            }
+
+            while (!model.isValidMove(move));
+
             model.setOwner(move, model.getCurrentPlayer());
-            
+
             if (model.isOver()) {
                 view.afficherPlateau(model.getBoard());
                 view.afficherVictoire(model.getCurrentPlayer());
                 break;
             }
-            
+
             model.switchPlayer();
         }
         view.afficherFinPartie();
     }
 
-    public TicTacToeLogic getModel() {
-        return model;
-    }
 
     public static TicTacToeController createHumanVsHuman() {
         return new TicTacToeController(

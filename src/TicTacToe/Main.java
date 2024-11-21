@@ -1,6 +1,8 @@
-import Game.Game;
-import Game.TicTacToeController;
-import Game.UserInteract;
+package TicTacToe;
+
+import TicTacToe.Game.Game;
+import TicTacToe.Game.TicTacToeController;
+import TicTacToe.Game.UserInteract;
 
 public class Main {
     public static void main(String[] args) {
