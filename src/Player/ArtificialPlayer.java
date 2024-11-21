@@ -1,3 +1,8 @@
+package Player;
+
+import Game.TicTacToeLogic;
+import Game.UserInteract;
+
 import java.util.Random;
 
 public class ArtificialPlayer extends Player {
@@ -10,7 +15,7 @@ public class ArtificialPlayer extends Player {
 
     @Override
     public int[] getMove(TicTacToeLogic logic) {
-        System.out.println("L'ordinateur joue...");
+        UserInteract.afficherCoupOrdinateur();
         int[] move = new int[2];
         do {
             move[0] = random.nextInt(3);
@@ -33,7 +38,7 @@ CONSTRUCTEUR :
 - Stocke la référence vers la logique du jeu
 
 MÉTHODES :
-getRandomMove() :
+getMove() :
 - Génère des coordonnées aléatoires
 - Vérifie si le coup est valide
 - Continue jusqu'à trouver une case libre

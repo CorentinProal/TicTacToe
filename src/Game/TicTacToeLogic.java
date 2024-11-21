@@ -1,3 +1,9 @@
+package Game;
+
+import Board.Cell;
+import Board.CellState;
+import Player.Player;
+
 public class TicTacToeLogic {
     private final int SIZE = 3;
     private Cell[][] board;
@@ -30,49 +36,53 @@ public class TicTacToeLogic {
     }
 
     public void setOwner(int[] move, Player player) {
-        board[move[0]][move[1]].setRepresentation(player.getRepresentation());
+        CellState newState = player.getRepresentation().equals(" X ") ?
+                            CellState.X : CellState.O;
+        board[move[0]][move[1]].setState(newState);
     }
 
     public boolean isValidMove(int[] move) {
         return move[0] >= 0 && move[0] < SIZE && 
                move[1] >= 0 && move[1] < SIZE && 
-               board[move[0]][move[1]].getRepresentation().equals("   ");
+               board[move[0]][move[1]].isEmpty();
     }
 
     public boolean isOver() {
-
+        // Vérification des lignes
         for (int i = 0; i < SIZE; i++) {
-            if (!board[i][0].getRepresentation().equals("   ") &&
+            if (!board[i][0].isEmpty() &&
                 board[i][0].getRepresentation().equals(board[i][1].getRepresentation()) &&
                 board[i][0].getRepresentation().equals(board[i][2].getRepresentation())) {
                 return true;
             }
         }
 
-
+        // Vérification des colonnes
         for (int j = 0; j < SIZE; j++) {
-            if (!board[0][j].getRepresentation().equals("   ") &&
+            if (!board[0][j].isEmpty() &&
                 board[0][j].getRepresentation().equals(board[1][j].getRepresentation()) &&
                 board[0][j].getRepresentation().equals(board[2][j].getRepresentation())) {
                 return true;
             }
         }
 
-        if (!board[0][0].getRepresentation().equals("   ") &&
+        // Vérification des diagonales
+        if (!board[0][0].isEmpty() &&
             board[0][0].getRepresentation().equals(board[1][1].getRepresentation()) &&
             board[0][0].getRepresentation().equals(board[2][2].getRepresentation())) {
             return true;
         }
 
-        if (!board[0][2].getRepresentation().equals("   ") &&
+        if (!board[0][2].isEmpty() &&
             board[0][2].getRepresentation().equals(board[1][1].getRepresentation()) &&
             board[0][2].getRepresentation().equals(board[2][0].getRepresentation())) {
             return true;
         }
 
+        // Vérification match nul
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                if (board[i][j].getRepresentation().equals("   ")) {
+                if (board[i][j].isEmpty()) {
                     return false;
                 }
             }
@@ -88,7 +98,7 @@ Cette classe gère toute la logique du jeu TicTacToe.
 
 ATTRIBUTS :
 - SIZE : constante définissant la taille du plateau (3x3)
-- board : tableau 2D de Cell représentant le plateau de jeu
+- board : tableau 2D de Board.Cell représentant le plateau de jeu
 - currentPlayer : référence vers le joueur actuel
 - player1 : joueur avec le symbole " X "
 - player2 : joueur avec le symbole " O "
