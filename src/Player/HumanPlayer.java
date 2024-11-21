@@ -10,6 +10,6 @@ public class HumanPlayer extends Player {
 
     @Override
     public int[] getMove(TicTacToeLogic logic) {
-        return UserInteract.obtenirCoupJoueur(logic);
+        return UserInteract.obtenirCoupJoueur();
     }
 } 

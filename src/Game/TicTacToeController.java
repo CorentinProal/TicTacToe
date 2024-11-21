@@ -5,32 +5,46 @@ import Player.HumanPlayer;
 import Player.ArtificialPlayer;
 import Game.TicTacToeLogic;
 import Game.UserInteract;
+import Board.TicTacToeView;
+
 public class TicTacToeController {
     private TicTacToeLogic model;
+    private TicTacToeView view;
 
     public TicTacToeController(Player player1, Player player2) {
         this.model = new TicTacToeLogic(player1, player2);
+        this.view = new TicTacToeView(this);
     }
 
     public void startGame() {
-        UserInteract.afficherDebutPartie();
+        view.afficherDebutPartie();
         
         while (!model.isOver()) {
-            UserInteract.afficherPlateau(model.getBoard());
-            UserInteract.afficherTourJoueur(model.getCurrentPlayer());
+            view.afficherPlateau(model.getBoard());
+            view.afficherTourJoueur(model.getCurrentPlayer());
             
-            int[] move = model.getCurrentPlayer().getMove(model);
+            int[] move;
+            do {
+                view.afficherDemanderLigne();
+                view.afficherDemanderColonne();
+                move = model.getCurrentPlayer().getMove(model);
+                
+                if (!model.isValidMove(move)) {
+                    view.afficherErreurCoup();
+                }
+            } while (!model.isValidMove(move));
+            
             model.setOwner(move, model.getCurrentPlayer());
             
             if (model.isOver()) {
-                UserInteract.afficherPlateau(model.getBoard());
-                UserInteract.afficherVictoire(model.getCurrentPlayer());
+                view.afficherPlateau(model.getBoard());
+                view.afficherVictoire(model.getCurrentPlayer());
                 break;
             }
             
             model.switchPlayer();
         }
-        UserInteract.afficherFinPartie();
+        view.afficherFinPartie();
     }
 
     public TicTacToeLogic getModel() {

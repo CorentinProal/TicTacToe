@@ -1,8 +1,10 @@
 package Game;
 
+import Board.TicTacToeView;
+
 public class Game {
     public TicTacToeController createGame() {
-        UserInteract.afficherMenuPrincipal();
+        TicTacToeView.afficherMenuPrincipal();
         int choice = UserInteract.obtenirChoixMenu();
         
         TicTacToeController game = null;

@@ -1,5 +1,6 @@
 package Player;
 
+import Board.TicTacToeView;
 import Game.TicTacToeLogic;
 import Game.UserInteract;
 
@@ -15,7 +16,7 @@ public class ArtificialPlayer extends Player {
 
     @Override
     public int[] getMove(TicTacToeLogic logic) {
-        UserInteract.afficherCoupOrdinateur();
+        TicTacToeView.afficherCoupOrdinateur();
         int[] move = new int[2];
         do {
             move[0] = random.nextInt(3);
