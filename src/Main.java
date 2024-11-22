@@ -1,11 +1,11 @@
 import Game.Game;
-import Game.TicTacToeLogic;
+import Game.TicTacToeController;
 import Game.UserInteract;
 
 public class Main {
     public static void main(String[] args) {
         Game launcher = new Game();
-        TicTacToeLogic game = launcher.createGame();
+        TicTacToeController game = launcher.createGame();
         game.startGame();
         UserInteract.fermerScanner();
     }

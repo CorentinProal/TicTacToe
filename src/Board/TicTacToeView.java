@@ -1,6 +1,7 @@
 package Board;
 
 import Game.TicTacToeController;
+import Game.TicTacToeLogic;
 import Player.Player;
 
 public class TicTacToeView {

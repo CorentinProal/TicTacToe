@@ -2,6 +2,7 @@ package Player;
 
 import Board.TicTacToeView;
 import Game.TicTacToeLogic;
+import Game.UserInteract;
 
 import java.util.Random;
 

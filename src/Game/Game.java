@@ -1,24 +1,22 @@
 package Game;
 
 import Board.TicTacToeView;
-import Player.ArtificialPlayer;
-import Player.HumanPlayer;
 
 public class Game {
-    public TicTacToeLogic createGame() {
+    public TicTacToeController createGame() {
         TicTacToeView.afficherMenuPrincipal();
         int choice = UserInteract.obtenirChoixMenu();
         
-        TicTacToeLogic game = null;
+        TicTacToeController game = null;
         switch (choice) {
             case 1:
-                game = new TicTacToeLogic(new HumanPlayer("X"), new HumanPlayer("O"));
+                game = TicTacToeController.createHumanVsHuman();
                 break;
             case 2:
-                game = new TicTacToeLogic(new HumanPlayer("X"), new ArtificialPlayer("O"));
+                game = TicTacToeController.createHumanVsAI();
                 break;
             case 3:
-                game = new TicTacToeLogic(new ArtificialPlayer("X"), new ArtificialPlayer("O"));
+                game = TicTacToeController.createAIVsAI();
                 break;
         }
         

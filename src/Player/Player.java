@@ -14,6 +14,10 @@ public abstract class Player {
         return symbol.getRep();
     }
 
+    public CellState getSymbol() {
+        return symbol;
+    }
+
     public abstract int[] getMove(TicTacToeLogic logic);
 }
 
