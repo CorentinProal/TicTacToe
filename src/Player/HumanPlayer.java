@@ -1,7 +1,7 @@
-package TicTacToe.Player;
+package Player;
 
-import TicTacToe.Game.TicTacToeLogic;
-import TicTacToe.Game.UserInteract;
+import Game.TicTacToeLogic;
+import Game.UserInteract;
 
 public class HumanPlayer extends Player {
     public HumanPlayer(String representation) {

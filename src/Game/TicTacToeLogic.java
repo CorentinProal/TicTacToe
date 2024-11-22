@@ -1,15 +1,14 @@
-package TicTacToe.Game;
+package Game;
 
-import TicTacToe.Board.Cell;
-import TicTacToe.Board.CellState;
-import TicTacToe.Player.Player;
+import Board.Cell;
+import Board.CellState;
+import Board.TicTacToeView;
+import Player.Player;
 
 public class TicTacToeLogic {
     private final int SIZE = 3;
     private Cell[][] board;
     private Player currentPlayer;
-    private Player player1;
-    private Player player2;
 
     public TicTacToeLogic(Player player1, Player player2) {
         board = new Cell[SIZE][SIZE];
@@ -18,25 +17,15 @@ public class TicTacToeLogic {
                 board[i][j] = new Cell();
             }
         }
-        this.player1 = player1;
-        this.player2 = player2;
-        currentPlayer = player1;
+        this.currentPlayer = player1;
     }
 
     public Cell[][] getBoard() {
         return board;
     }
 
-    public Player getCurrentPlayer() {
-        return currentPlayer;
-    }
-
-    public void switchPlayer() {
-        currentPlayer = (currentPlayer == player1) ? player2 : player1;
-    }
-
     public void setOwner(int[] move, Player player) {
-        CellState newState = player.getRepresentation().equals(" X ") ?
+        CellState newState = player.getRepresentation().trim().equals("X") ?
                             CellState.X : CellState.O;
         board[move[0]][move[1]].setState(newState);
     }
@@ -45,6 +34,10 @@ public class TicTacToeLogic {
         return move[0] >= 0 && move[0] < SIZE && 
                move[1] >= 0 && move[1] < SIZE && 
                board[move[0]][move[1]].isEmpty();
+    }
+
+    public int[] getMoveFromPlayer() {
+        return currentPlayer.getMove(this);
     }
 
     public boolean isOver() {
@@ -90,6 +83,31 @@ public class TicTacToeLogic {
 
         return true;
     }
+
+    public void startGame() {
+        while (!isOver()) {
+            // Afficher le plateau
+            TicTacToeView.afficherPlateau(board);
+            
+            // Afficher le tour du joueur actuel
+            TicTacToeView.afficherTourJoueur(currentPlayer);
+            
+            // Obtenir le coup du joueur
+            int[] move = getMoveFromPlayer();
+            
+            // Vérifier si le coup est valide
+            if (isValidMove(move)) {
+                setOwner(move, currentPlayer); // Mettre à jour le plateau
+                // Changer de joueur
+                currentPlayer = (currentPlayer.getRepresentation().equals("X")) ? new HumanPlayer("O") : new HumanPlayer("X");
+            } else {
+                TicTacToeView.afficherErreurCoup(); // Afficher une erreur si le coup n'est pas valide
+            }
+        }
+        
+        // Afficher le résultat final
+        TicTacToeView.afficherFinPartie();
+    }
 } 
 
 
@@ -98,7 +116,7 @@ Cette classe gère toute la logique du jeu TicTacToe.
 
 ATTRIBUTS :
 - SIZE : constante définissant la taille du plateau (3x3)
-- board : tableau 2D de TicTacToe.Board.Cell représentant le plateau de jeu
+- board : tableau 2D de Board.Cell représentant le plateau de jeu
 - currentPlayer : référence vers le joueur actuel
 - player1 : joueur avec le symbole " X "
 - player2 : joueur avec le symbole " O "
@@ -130,4 +148,7 @@ isOver() :
 - Vérifie si la partie est terminée :
   * Alignement horizontal, vertical ou diagonal
   * Plateau plein
+
+startGame() :
+- Gère la logique de démarrage du jeu
 */

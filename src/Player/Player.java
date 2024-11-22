@@ -1,13 +1,13 @@
-package TicTacToe.Player;
+package Player;
 
-import TicTacToe.Board.CellState;
-import TicTacToe.Game.TicTacToeLogic;
+import Board.CellState;
+import Game.TicTacToeLogic;
 
 public abstract class Player {
     private CellState symbol;
 
     public Player(String representation) {
-        this.symbol = representation.equals(" X ") ? CellState.X : CellState.O;
+        this.symbol = representation.trim().equals("X") ? CellState.X : CellState.O;
     }
 
     public String getRepresentation() {

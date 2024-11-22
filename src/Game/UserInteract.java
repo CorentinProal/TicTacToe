@@ -1,4 +1,4 @@
-package TicTacToe.Game;
+package Game;
 
 import java.util.Scanner;
 
@@ -14,9 +14,12 @@ public class UserInteract {
                 choice = scanner.nextInt();
                 if (choice >= 1 && choice <= 3) {
                     validChoice = true;
+                } else {
+                    System.out.println("Veuillez choisir entre 1 et 3.");
                 }
             } catch (Exception e) {
                 scanner.nextLine();
+                System.out.println("Veuillez entrer un nombre valide.");
             }
         }
         return choice;
@@ -28,7 +31,8 @@ public class UserInteract {
             move[0] = scanner.nextInt();
             move[1] = scanner.nextInt();
         } catch (Exception e) {
-            scanner.nextInt();
+            scanner.nextLine();
+            System.out.println("Erreur lors de la saisie du coup. Veuillez réessayer.");
         }
         return move;
     }

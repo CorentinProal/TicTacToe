@@ -1,4 +1,4 @@
-package TicTacToe.Board;
+package Board;
 
 public class Cell {
     private CellState state;

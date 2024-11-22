@@ -1,13 +1,11 @@
-package TicTacToe;
-
-import TicTacToe.Game.Game;
-import TicTacToe.Game.TicTacToeController;
-import TicTacToe.Game.UserInteract;
+import Game.Game;
+import Game.TicTacToeLogic;
+import Game.UserInteract;
 
 public class Main {
     public static void main(String[] args) {
         Game launcher = new Game();
-        TicTacToeController game = launcher.createGame();
+        TicTacToeLogic game = launcher.createGame();
         game.startGame();
         UserInteract.fermerScanner();
     }
