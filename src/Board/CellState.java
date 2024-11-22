@@ -2,8 +2,8 @@ package Board;
 
 public enum CellState {
     EMPTY("   "),
-    X("X"),
-    O("O");
+    X(" X "),
+    O(" O ");
 
     private final String rep;
 

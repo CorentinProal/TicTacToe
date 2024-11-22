@@ -1,30 +1,19 @@
-package Game;
+package GameLogic;
 
-import Board.Cell;
+import Board.BoardGame;
 import Board.CellState;
-import Player.Player;
+import Game.players.Player;
 
-public class TicTacToeLogic {
-    private final int SIZE = 3;
-    private Cell[][] board;
+public class TicTacToeLogic extends BoardGame {
     private Player currentPlayer;
     private Player player1;
     private Player player2;
 
     public TicTacToeLogic(Player player1, Player player2) {
-        board = new Cell[SIZE][SIZE];
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
-                board[i][j] = new Cell();
-            }
-        }
+        super(3);
         this.player1 = player1;
         this.player2 = player2;
         currentPlayer = player1;
-    }
-
-    public Cell[][] getBoard() {
-        return board;
     }
 
     public Player getCurrentPlayer() {
@@ -36,20 +25,21 @@ public class TicTacToeLogic {
     }
 
     public void setOwner(int[] move, Player player) {
-        CellState newState = player.getRepresentation().equals(" X ") ?
-                            CellState.X : CellState.O;
+        CellState newState = player.getRepresentation().equals(" X ") ? CellState.X : CellState.O;
         board[move[0]][move[1]].setState(newState);
     }
 
+    @Override
     public boolean isValidMove(int[] move) {
-        return move[0] >= 0 && move[0] < SIZE && 
-               move[1] >= 0 && move[1] < SIZE && 
+        return move[0] >= 0 && move[0] < size && 
+               move[1] >= 0 && move[1] < size && 
                board[move[0]][move[1]].isEmpty();
     }
 
+    @Override
     public boolean isOver() {
         // Vérification des lignes
-        for (int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < size; i++) {
             if (!board[i][0].isEmpty() &&
                 board[i][0].getRepresentation().equals(board[i][1].getRepresentation()) &&
                 board[i][0].getRepresentation().equals(board[i][2].getRepresentation())) {
@@ -58,7 +48,7 @@ public class TicTacToeLogic {
         }
 
         // Vérification des colonnes
-        for (int j = 0; j < SIZE; j++) {
+        for (int j = 0; j < size; j++) {
             if (!board[0][j].isEmpty() &&
                 board[0][j].getRepresentation().equals(board[1][j].getRepresentation()) &&
                 board[0][j].getRepresentation().equals(board[2][j].getRepresentation())) {
@@ -80,8 +70,8 @@ public class TicTacToeLogic {
         }
 
         // Vérification match nul
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 if (board[i][j].isEmpty()) {
                     return false;
                 }

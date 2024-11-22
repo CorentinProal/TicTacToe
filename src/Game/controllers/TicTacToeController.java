@@ -1,10 +1,9 @@
-package Game;
+package Game.controllers;
 
-import Player.Player;
-import Player.HumanPlayer;
-import Player.ArtificialPlayer;
-import Game.TicTacToeLogic;
-import Game.UserInteract;
+import Game.players.Player;
+import Game.players.HumanPlayer;
+import Game.players.ArtificialPlayer;
+import GameLogic.TicTacToeLogic;
 import Board.TicTacToeView;
 
 public class TicTacToeController {

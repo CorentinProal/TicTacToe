@@ -1,9 +1,9 @@
-package Player;
+package Game.players;
 
 import Board.CellState;
-import Game.TicTacToeLogic;
+import GameLogic.TicTacToeLogic;
 
-public abstract class Player {
+public abstract class Player<T> {
     private CellState symbol;
 
     public Player(String representation) {
@@ -17,6 +17,8 @@ public abstract class Player {
     public CellState getSymbol() {
         return symbol;
     }
+
+    public abstract int[] getMove(T logic);
 
     public abstract int[] getMove(TicTacToeLogic logic);
 }

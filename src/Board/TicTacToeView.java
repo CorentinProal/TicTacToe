@@ -1,8 +1,7 @@
 package Board;
 
-import Game.TicTacToeController;
-import Game.TicTacToeLogic;
-import Player.Player;
+import Game.controllers.TicTacToeController;
+import Game.players.Player;
 
 public class TicTacToeView {
     private TicTacToeController controller;
@@ -26,6 +25,7 @@ public class TicTacToeView {
 
     public void afficherDemanderLigne() {
         System.out.print("Ligne (0-2) : ");
+        System.out.println("   ");
     }
 
     public void afficherDemanderColonne() {
@@ -77,10 +77,10 @@ public class TicTacToeView {
 Cette classe gère l'interface utilisateur du jeu TicTacToe.
 
 ATTRIBUTS :
-- controller : instance de Game.TicTacToeController qui gère la logique du jeu
+- controller : instance de Game.controllers.TicTacToeController qui gère la logique du jeu
 
 CONSTRUCTEUR :
-- Initialise une nouvelle instance de Game.TicTacToeController
+- Initialise une nouvelle instance de Game.controllers.TicTacToeController
 
 MÉTHODES :
 afficherMenuPrincipal() :
@@ -107,10 +107,10 @@ afficherDebutPartie() :
 afficherPlateau(Board.Cell[][] board) :
 - Affiche l'état actuel du plateau
 
-afficherTourJoueur(Player.Player player) :
+afficherTourJoueur(Game.players.Player player) :
 - Affiche le message pour le joueur actuel
 
-afficherVictoire(Player.Player player) :
+afficherVictoire(Game.players.Player player) :
 - Affiche le message pour le joueur gagnant
 
 afficherFinPartie() :
