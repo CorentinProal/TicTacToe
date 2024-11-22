@@ -42,14 +42,21 @@ public class GomokuView {
 
     public void afficherPlateau(Cell[][] board) {
 //        String separator = "-".repeat(cols * 4 + 1);
-        for (int i = 0; i < 15; i++) {
-            System.out.println("-------------------------------------------------------------");
-            for (int j = 0; j < 15; j++) {
+        int size = 15;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print("----");
+            }
+            System.out.println();
+            for (int j = 0; j < size; j++) {
                 System.out.print("|" + board[i][j].getRepresentation());
             }
             System.out.println("|");
         }
-        System.out.println("-------------------------------------------------------------");
+        for (int j = 0; j < size; j++) {
+            System.out.print("----");
+        }
+        System.out.println();
     }
 
     public void afficherTourJoueur(Player player) {
