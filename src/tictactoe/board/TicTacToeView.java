@@ -4,7 +4,7 @@ import tictactoe.TicTacToeController;
 import tictactoe.players.Player;
 
 public class TicTacToeView {
-    private TicTacToeController controller;
+    private final TicTacToeController controller;
 
     public TicTacToeView(TicTacToeController controller) {
         this.controller = controller;
@@ -25,7 +25,6 @@ public class TicTacToeView {
 
     public void afficherDemanderLigne() {
         System.out.print("Ligne (0-2) : ");
-        System.out.println("   ");
     }
 
     public void afficherDemanderColonne() {
@@ -33,11 +32,11 @@ public class TicTacToeView {
     }
 
     public void afficherErreurCoup() {
-        System.out.println("Position invalide ou case déjà occupée !");
+        System.out.println("Case déjà occupée ou position invalide !");
     }
 
     public void afficherErreurSaisie() {
-        System.out.println("Veuillez entrer un nombre !");
+        System.out.println("Veuillez entrer un nombre entre 0 et 2 !");
     }
 
     public void afficherDebutPartie() {
@@ -55,7 +54,7 @@ public class TicTacToeView {
         System.out.println("-------------");
     }
 
-    public void afficherTourJoueur(Player player) {
+    public static void afficherTourJoueur(Player player) {
         System.out.println("\nAu tour du joueur" + player.getRepresentation());
     }
 

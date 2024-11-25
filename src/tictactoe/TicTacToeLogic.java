@@ -6,8 +6,8 @@ import tictactoe.players.Player;
 
 public class TicTacToeLogic extends BoardGame {
     private Player currentPlayer;
-    private Player player1;
-    private Player player2;
+    private final Player player1;
+    private final Player player2;
 
     public TicTacToeLogic(Player player1, Player player2) {
         super(3);

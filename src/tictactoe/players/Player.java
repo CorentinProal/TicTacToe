@@ -4,7 +4,7 @@ import tictactoe.board.CellState;
 import tictactoe.TicTacToeLogic;
 
 public abstract class Player<T> {
-    private CellState symbol;
+    private final CellState symbol;
 
     public Player(String representation) {
         this.symbol = representation.trim().equals("X") ? CellState.X : CellState.O;

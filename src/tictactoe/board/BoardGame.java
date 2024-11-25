@@ -15,10 +15,7 @@ public abstract class BoardGame {
     }
 
     public boolean exist(int row, int col) {
-        if (row < 0 || row >= size || col < 0 || col >= size) {
-            return false;
-        }
-        return true;
+        return row >= 0 && row < size && col >= 0 && col < size;
     }
 
     /**

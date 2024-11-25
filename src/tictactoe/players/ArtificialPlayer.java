@@ -6,7 +6,7 @@ import tictactoe.TicTacToeLogic;
 import java.util.Random;
 
 public class ArtificialPlayer extends Player {
-    private Random random;
+    private final Random random;
 
     public ArtificialPlayer(String representation) {
         super(representation);

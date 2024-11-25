@@ -3,7 +3,7 @@ package tictactoe;
 import java.util.Scanner;
 
 public class UserInteract {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static int obtenirChoixMenu() {
         boolean validChoice = false;
@@ -12,7 +12,7 @@ public class UserInteract {
         while (!validChoice) {
             try {
                 choice = scanner.nextInt();
-                if (choice >= 1 && choice <= 3) {
+                if (choice >= 0 && choice <= 2) {
                     validChoice = true;
                 }
             } catch (Exception e) {

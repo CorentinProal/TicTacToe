@@ -6,8 +6,8 @@ import tictactoe.players.ArtificialPlayer;
 import tictactoe.board.TicTacToeView;
 
 public class TicTacToeController {
-    private TicTacToeLogic model;
-    private TicTacToeView view;
+    private final TicTacToeLogic model;
+    private final TicTacToeView view;
 
     public TicTacToeController(Player player1, Player player2) {
         this.model = new TicTacToeLogic(player1, player2);
@@ -25,10 +25,14 @@ public class TicTacToeController {
             do {
                 view.afficherDemanderLigne();
                 view.afficherDemanderColonne();
-                move = model.getCurrentPlayer().getMove(model);
+                move = UserInteract.obtenirCoupJoueur();
                 
                 if (!model.isValidMove(move)) {
-                    view.afficherErreurCoup();
+                    if (getModel().isValidMove(move)) {
+                        view.afficherErreurSaisie();
+                    } else {
+                        view.afficherErreurCoup();
+                    }
                 }
             } while (!model.isValidMove(move));
             
