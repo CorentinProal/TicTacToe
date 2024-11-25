@@ -1,4 +1,4 @@
-package TicTacToe.Board;
+package tictactoe.board;
 
 public enum CellState {
     EMPTY("   "),

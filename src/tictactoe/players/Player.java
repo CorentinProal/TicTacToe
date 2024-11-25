@@ -1,18 +1,24 @@
-package TicTacToe.Player;
+package tictactoe.players;
 
-import TicTacToe.Board.CellState;
-import TicTacToe.Game.TicTacToeLogic;
+import tictactoe.board.CellState;
+import tictactoe.TicTacToeLogic;
 
-public abstract class Player {
+public abstract class Player<T> {
     private CellState symbol;
 
     public Player(String representation) {
-        this.symbol = representation.equals(" X ") ? CellState.X : CellState.O;
+        this.symbol = representation.trim().equals("X") ? CellState.X : CellState.O;
     }
 
     public String getRepresentation() {
         return symbol.getRep();
     }
+
+    public CellState getSymbol() {
+        return symbol;
+    }
+
+    public abstract int[] getMove(T logic);
 
     public abstract int[] getMove(TicTacToeLogic logic);
 }

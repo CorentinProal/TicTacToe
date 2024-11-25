@@ -1,7 +1,7 @@
-package TicTacToe.Player;
+package tictactoe.players;
 
-import TicTacToe.Board.TicTacToeView;
-import TicTacToe.Game.TicTacToeLogic;
+import tictactoe.board.TicTacToeView;
+import tictactoe.TicTacToeLogic;
 
 import java.util.Random;
 
@@ -11,6 +11,11 @@ public class ArtificialPlayer extends Player {
     public ArtificialPlayer(String representation) {
         super(representation);
         this.random = new Random();
+    }
+
+    @Override
+    public int[] getMove(Object logic) {
+        return new int[0];
     }
 
     @Override

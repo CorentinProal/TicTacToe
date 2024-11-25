@@ -1,4 +1,4 @@
-package TicTacToe.Game;
+package tictactoe;
 
 import java.util.Scanner;
 
@@ -28,7 +28,7 @@ public class UserInteract {
             move[0] = scanner.nextInt();
             move[1] = scanner.nextInt();
         } catch (Exception e) {
-            scanner.nextInt();
+            scanner.nextLine();
         }
         return move;
     }
