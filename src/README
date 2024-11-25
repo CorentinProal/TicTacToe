@@ -12,6 +12,8 @@ Le projet est organisé en plusieurs packages pour une meilleure clarté et modu
 
 - **gameLogic/** : Contient les classes qui gèrent la logique de chaque jeu, comme les règles et les vérifications de victoire.
 
+- **gomoku/** : Contient les classes spécifiques au jeu Gomoku, y compris la logique du jeu, les joueurs, et la vue.
+
 ## Classes Principales
 
 ### tictactoe.game
@@ -39,7 +41,10 @@ Les classes dans le package `controllers` (comme `TicTacToeController` et `Gomok
 Les classes dans le package `players` représentent les différents types de joueurs.
  Cela inclut les joueurs humains et artificiels, permettant ainsi une flexibilité dans le type de jeu.
 
-## Conclusion
+### Gomoku
 
-Cette structure permet de maintenir le code organisé et facile à comprendre.
- Chaque classe a une responsabilité claire, ce qui facilite la maintenance et l'évolution du projet.
+- **GomokuLogic** : Gère la logique du jeu Gomoku, y compris les règles et les vérifications de victoire.
+- **GomokuPlayer** : Classe abstraite représentant un joueur dans le jeu Gomoku.
+- **GomokuHumanPlayer** : Représente un joueur humain dans le jeu Gomoku.
+- **GomokuArtificialPlayer** : Représente un joueur artificiel qui joue de manière aléatoire dans le jeu Gomoku.
+- **GomokuView** : Gère l'affichage et l'interface utilisateur pour le jeu Gomoku.
