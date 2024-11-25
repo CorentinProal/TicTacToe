@@ -1,8 +1,7 @@
-package GameLogic;
+package gomoku;
 
-import Board.BoardGame;
-import Board.CellState;
-import Game.players.GomokuPlayer;
+import tictactoe.board.BoardGame;
+import tictactoe.board.CellState;
 
 public class GomokuLogic extends BoardGame {
     private GomokuPlayer currentPlayer;
@@ -38,58 +37,38 @@ public class GomokuLogic extends BoardGame {
 
     @Override
     public boolean isOver() {
-        // Vérif lignes
 
+        // Vérif lignes
         for (int i = 0; i < size; i++) {
             if (exist(i, 0) && !board[i][0].isEmpty() &&
-                    board[i][0].isX() && board[i][1].isX() && board[i][2].isX()) {
-                return true; // Pour ligne X
-            }
-            if (exist(i, 0) && !board[i][0].isEmpty() &&
-                    board[i][0].isO() && board[i][1].isO() && board[i][2].isO()) {
-                return true; // Pour ligne O
+                    board[i][0].getState() == board[i][1].getState() &&
+                    board[i][0].getState() == board[i][2].getState()) {
+                return true;
             }
         }
 
         // Vérif Colonne
-
         for (int j = 0; j < size; j++) {
             if (exist(0, j) && !board[0][j].isEmpty() &&
-                    board[0][j].isX() && board[1][j].isX() && board[2][j].isX()) {
-                return true; // Pour colonne X
-            }
-            if (exist(0, j) && !board[0][j].isEmpty() &&
-                    board[0][j].isO() && board[1][j].isO() && board[2][j].isO()) {
-                return true; // Pour colonne O
+                    board[0][j].getState() == board[1][j].getState() &&
+                    board[0][j].getState() == board[2][j].getState()) {
+                return true;
             }
         }
 
         //Vérif Diag
-
-        // Pour X
-
         if (exist(0, 0) && !board[0][0].isEmpty() &&
-                board[0][0].isX() && board[1][1].isX() && board[2][2].isX()) {
-            return true; // Pour diagonnale \ pour le joueur X
+                board[0][0].getState() == board[1][1].getState() &&
+                board[0][0].getState() == board[2][2].getState()) {
+            return true; // Pour diagonnale \
         }
         if (exist(0, 2) && !board[0][2].isEmpty() &&
-                board[0][2].isX() && board[1][1].isX() && board[2][0].isX()) {
-            return true; // Pour diagonnale / pour le joueur X
-        }
-
-        // Pour O
-
-        if (exist(0, 0) && !board[0][0].isEmpty() &&
-                board[0][0].isO() && board[1][1].isO() && board[2][2].isO()) {
-            return true; // Pour diagonnale \ pour le joueur O
-        }
-        if (exist(0, 2) && !board[0][2].isEmpty() &&
-                board[0][2].isO() && board[1][1].isO() && board[2][0].isO()) {
-            return true; // Pour diagonnale / pour le joueur O
+                board[0][2].getState() == board[1][1].getState() &&
+                board[0][2].getState() == board[2][0].getState()) {
+            return true; // Pour diagonnale /
         }
 
         // Vérif Match nul
-
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (board[i][j].isEmpty()) {

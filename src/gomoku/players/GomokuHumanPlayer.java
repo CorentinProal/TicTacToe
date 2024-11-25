@@ -1,8 +1,9 @@
-package Game.players;
+package gomoku.players;
 
-import Game.UserInteract;
-import GameLogic.GomokuLogic;
-import GameLogic.TicTacToeLogic;
+import tictactoe.UserInteract;
+import tictactoe.TicTacToeLogic;
+import gomoku.GomokuLogic;
+import gomoku.GomokuPlayer;
 
 public class GomokuHumanPlayer extends GomokuPlayer {
     public GomokuHumanPlayer(String representation) {

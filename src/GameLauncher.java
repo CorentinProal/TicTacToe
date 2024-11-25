@@ -1,7 +1,6 @@
-package Game;
-
-import Game.controllers.GomokuController;
-import Game.controllers.TicTacToeController;
+import gomoku.players.GomokuController;
+import tictactoe.UserInteract;
+import tictactoe.TicTacToeController;
 
 public class GameLauncher {
     public static void launch() {

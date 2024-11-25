@@ -1,18 +1,16 @@
-package Game.controllers;
+package gomoku.players;
 
-import Game.players.Player;
-import Game.players.HumanPlayer;
-import Game.players.ArtificialPlayer;
-import GameLogic.TicTacToeLogic;
-import Board.TicTacToeView;
+import gomoku.GomokuLogic;
+import gomoku.GomokuPlayer;
+import gomoku.board.GomokuView;
 
-public class TicTacToeController {
-    private TicTacToeLogic model;
-    private TicTacToeView view;
+public class GomokuController {
+    private GomokuLogic model;
+    private GomokuView view;
 
-    public TicTacToeController(Player player1, Player player2) {
-        this.model = new TicTacToeLogic(player1, player2);
-        this.view = new TicTacToeView(this);
+    public GomokuController(GomokuPlayer player1, GomokuPlayer player2) {
+        this.model = new GomokuLogic(player1, player2);
+        this.view = new GomokuView(this);
     }
 
     public void startGame() {
@@ -46,28 +44,24 @@ public class TicTacToeController {
         view.afficherFinPartie();
     }
 
-    public TicTacToeLogic getModel() {
-        return model;
-    }
-
-    public static TicTacToeController createHumanVsHuman() {
-        return new TicTacToeController(
-            new HumanPlayer(" X "),
-            new HumanPlayer(" O ")
+    public static GomokuController createHumanVsHuman() {
+        return new GomokuController(
+            new GomokuHumanPlayer(" X "),
+            new GomokuHumanPlayer(" O ")
         );
     }
 
-    public static TicTacToeController createHumanVsAI() {
-        return new TicTacToeController(
-            new HumanPlayer(" X "),
-            new ArtificialPlayer(" O ")
+    public static GomokuController createHumanVsAI() {
+        return new GomokuController(
+            new GomokuHumanPlayer(" X "),
+            new GomokuArtificialPlayer(" O ")
         );
     }
 
-    public static TicTacToeController createAIVsAI() {
-        return new TicTacToeController(
-            new ArtificialPlayer(" X "),
-            new ArtificialPlayer(" O ")
+    public static GomokuController createAIVsAI() {
+        return new GomokuController(
+            new GomokuArtificialPlayer(" X "),
+            new GomokuArtificialPlayer(" O ")
         );
     }
 } 

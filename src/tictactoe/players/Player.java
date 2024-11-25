@@ -1,7 +1,7 @@
-package Game.players;
+package tictactoe.players;
 
-import Board.CellState;
-import GameLogic.TicTacToeLogic;
+import tictactoe.board.CellState;
+import tictactoe.TicTacToeLogic;
 
 public abstract class Player<T> {
     private CellState symbol;

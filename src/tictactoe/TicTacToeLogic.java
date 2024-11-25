@@ -1,8 +1,8 @@
-package GameLogic;
+package tictactoe;
 
-import Board.BoardGame;
-import Board.CellState;
-import Game.players.Player;
+import tictactoe.board.BoardGame;
+import tictactoe.board.CellState;
+import tictactoe.players.Player;
 
 public class TicTacToeLogic extends BoardGame {
     private Player currentPlayer;

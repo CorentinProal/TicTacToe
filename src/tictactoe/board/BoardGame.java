@@ -1,4 +1,4 @@
-package Board;
+package tictactoe.board;
 
 public abstract class BoardGame {
     protected Cell[][] board;

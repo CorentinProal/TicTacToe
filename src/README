@@ -4,20 +4,20 @@
 
 Le projet est organisé en plusieurs packages pour une meilleure clarté et modularité :
 
-- **game/** : Contient les classes principales qui gèrent le lancement du jeu et l'interaction avec l'utilisateur.
-  - **controllers/** : Contient les contrôleurs pour chaque type de jeu (Gomoku et TicTacToe).
+- **tictactoe.game/** : Contient les classes principales qui gèrent le lancement du jeu et l'interaction avec l'utilisateur.
+  - **controllers/** : Contient les contrôleurs pour chaque type de jeu (gomoku et TicTacToe).
   - **players/** : Contient les classes représentant les joueurs, qu'ils soient humains ou artificiels.
 
-- **board/** : Contient les classes liées à la représentation du plateau de jeu, y compris les cellules et les vues pour chaque type de jeu.
+- **tictactoe.board/** : Contient les classes liées à la représentation du plateau de jeu, y compris les cellules et les vues pour chaque type de jeu.
 
 - **gameLogic/** : Contient les classes qui gèrent la logique de chaque jeu, comme les règles et les vérifications de victoire.
 
 ## Classes Principales
 
-### Game
+### tictactoe.game
 
-La classe `Game` est responsable de la création et de la gestion des jeux.
- Elle fournit des méthodes pour créer des instances de jeux spécifiques comme TicTacToe et Gomoku.
+La classe `tictactoe.game` est responsable de la création et de la gestion des jeux.
+ Elle fournit des méthodes pour créer des instances de jeux spécifiques comme TicTacToe et gomoku.
 
 ### GameLauncher
 
@@ -25,9 +25,9 @@ La classe `GameLauncher` gère le lancement du jeu.
  Elle affiche un menu pour que l'utilisateur puisse choisir le jeu qu'il souhaite jouer.
   En fonction du choix de l'utilisateur, elle crée une instance du contrôleur de jeu approprié et lance la partie.
 
-### UserInteract
+### tictactoe.UserInteract
 
-La classe `UserInteract` est utilisée pour gérer l'interaction avec l'utilisateur, y compris la récupération des choix de menu et la fermeture des ressources.
+La classe `tictactoe.UserInteract` est utilisée pour gérer l'interaction avec l'utilisateur, y compris la récupération des choix de menu et la fermeture des ressources.
 
 ### Controllers
 

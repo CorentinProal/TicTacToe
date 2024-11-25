@@ -1,4 +1,4 @@
-package Board;
+package tictactoe.board;
 
 public class Cell {
     private CellState state;

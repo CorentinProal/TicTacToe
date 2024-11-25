@@ -1,7 +1,8 @@
-package Board;
+package gomoku.board;
 
-import Game.controllers.GomokuController;
-import Game.players.Player;
+import tictactoe.board.Cell;
+import tictactoe.players.Player;
+import gomoku.players.GomokuController;
 
 public class GomokuView {
     private GomokuController controller;

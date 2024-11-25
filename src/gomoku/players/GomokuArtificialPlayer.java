@@ -1,7 +1,8 @@
-package Game.players;
+package gomoku.players;
 
-import GameLogic.GomokuLogic;
-import GameLogic.TicTacToeLogic;
+import tictactoe.TicTacToeLogic;
+import gomoku.GomokuLogic;
+import gomoku.GomokuPlayer;
 
 import java.util.Random;
 

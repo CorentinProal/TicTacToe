@@ -1,7 +1,7 @@
-package Board;
+package tictactoe.board;
 
-import Game.controllers.TicTacToeController;
-import Game.players.Player;
+import tictactoe.TicTacToeController;
+import tictactoe.players.Player;
 
 public class TicTacToeView {
     private TicTacToeController controller;
@@ -104,7 +104,7 @@ afficherErreurSaisie() :
 afficherDebutPartie() :
 - Affiche le message de début de partie
 
-afficherPlateau(Board.Cell[][] board) :
+afficherPlateau(Board.Cell[][] tictactoe.board) :
 - Affiche l'état actuel du plateau
 
 afficherTourJoueur(Game.players.Player player) :
