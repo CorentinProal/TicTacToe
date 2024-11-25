@@ -27,9 +27,9 @@ La classe `GameLauncher` gère le lancement du jeu.
  Elle affiche un menu pour que l'utilisateur puisse choisir le jeu qu'il souhaite jouer.
   En fonction du choix de l'utilisateur, elle crée une instance du contrôleur de jeu approprié et lance la partie.
 
-### tictactoe.UserInteract
+### gomoku.GomokuUserInteract
 
-La classe `tictactoe.UserInteract` est utilisée pour gérer l'interaction avec l'utilisateur, y compris la récupération des choix de menu et la fermeture des ressources.
+La classe `gomoku.GomokuUserInteract` est utilisée pour gérer l'interaction avec l'utilisateur, y compris la récupération des choix de menu et la fermeture des ressources.
 
 ### Controllers
 
