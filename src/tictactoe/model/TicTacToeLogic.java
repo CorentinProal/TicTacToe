@@ -1,8 +1,6 @@
-package tictactoe;
+package tictactoe.model;
 
-import tictactoe.board.BoardGame;
-import tictactoe.board.CellState;
-import tictactoe.players.Player;
+import tictactoe.model.players.Player;
 
 public class TicTacToeLogic extends BoardGame {
     private Player currentPlayer;

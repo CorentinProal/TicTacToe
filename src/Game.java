@@ -1,9 +1,9 @@
 import gomoku.GomokuUserInteract;
-import tictactoe.board.TicTacToeView;
+import tictactoe.view.TicTacToeView;
 import gomoku.board.GomokuView;
 import gomoku.GomokuController;
-import tictactoe.TicTacToeController;
-import tictactoe.UserInteract;
+import tictactoe.controller.TicTacToeController;
+import tictactoe.controller.UserInteract;
 
 public class Game {
     public TicTacToeController createTicTacToeGame() {

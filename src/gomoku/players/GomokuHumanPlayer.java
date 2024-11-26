@@ -1,7 +1,7 @@
 package gomoku.players;
 
 import gomoku.GomokuUserInteract;
-import tictactoe.TicTacToeLogic;
+import tictactoe.model.TicTacToeLogic;
 import gomoku.GomokuLogic;
 
 public class GomokuHumanPlayer extends GomokuPlayer {

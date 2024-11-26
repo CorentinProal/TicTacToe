@@ -1,4 +1,4 @@
-package tictactoe.board;
+package tictactoe.model;
 
 public abstract class BoardGame {
     protected Cell[][] board;

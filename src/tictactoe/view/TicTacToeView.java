@@ -1,7 +1,8 @@
-package tictactoe.board;
+package tictactoe.view;
 
-import tictactoe.TicTacToeController;
-import tictactoe.players.Player;
+import tictactoe.controller.TicTacToeController;
+import tictactoe.model.Cell;
+import tictactoe.model.players.Player;
 
 public class TicTacToeView {
     private final TicTacToeController controller;
@@ -24,11 +25,11 @@ public class TicTacToeView {
     }
 
     public void afficherDemanderLigne() {
-        System.out.print("Ligne (0-2) : ");
+        System.out.print("Ligne ( 0 - 2 ) : ");
     }
 
     public void afficherDemanderColonne() {
-        System.out.print("Colonne (0-2) : ");
+        System.out.print("Colonne ( 0 - 2 ) : ");
     }
 
     public void afficherErreurCoup() {

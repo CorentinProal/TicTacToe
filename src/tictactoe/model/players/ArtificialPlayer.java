@@ -1,7 +1,7 @@
-package tictactoe.players;
+package tictactoe.model.players;
 
-import tictactoe.board.TicTacToeView;
-import tictactoe.TicTacToeLogic;
+import tictactoe.view.TicTacToeView;
+import tictactoe.model.TicTacToeLogic;
 
 import java.util.Random;
 

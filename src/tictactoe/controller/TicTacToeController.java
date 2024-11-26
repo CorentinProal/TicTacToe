@@ -1,9 +1,10 @@
-package tictactoe;
+package tictactoe.controller;
 
-import tictactoe.players.Player;
-import tictactoe.players.HumanPlayer;
-import tictactoe.players.ArtificialPlayer;
-import tictactoe.board.TicTacToeView;
+import tictactoe.model.TicTacToeLogic;
+import tictactoe.model.players.Player;
+import tictactoe.model.players.HumanPlayer;
+import tictactoe.model.players.ArtificialPlayer;
+import tictactoe.view.TicTacToeView;
 
 public class TicTacToeController {
     private final TicTacToeLogic model;

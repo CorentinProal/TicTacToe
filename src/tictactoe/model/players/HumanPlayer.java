@@ -1,7 +1,7 @@
-package tictactoe.players;
+package tictactoe.model.players;
 
 import gomoku.GomokuUserInteract;
-import tictactoe.TicTacToeLogic;
+import tictactoe.model.TicTacToeLogic;
 
 public class HumanPlayer extends Player {
     public HumanPlayer(String representation) {

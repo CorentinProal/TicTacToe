@@ -1,8 +1,8 @@
 package gomoku;
 
 import gomoku.players.GomokuPlayer;
-import tictactoe.board.BoardGame;
-import tictactoe.board.CellState;
+import tictactoe.model.BoardGame;
+import tictactoe.model.CellState;
 
 public class GomokuLogic extends BoardGame {
     private GomokuPlayer currentPlayer;

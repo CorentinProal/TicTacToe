@@ -8,7 +8,7 @@ Le projet est organisé en plusieurs packages pour une meilleure clarté et modu
   - **controllers/** : Contient les contrôleurs pour chaque type de jeu (gomoku et TicTacToe).
   - **players/** : Contient les classes représentant les joueurs, qu'ils soient humains ou artificiels.
 
-- **tictactoe.board/** : Contient les classes liées à la représentation du plateau de jeu, y compris les cellules et les vues pour chaque type de jeu.
+- **tictactoe.model/** : Contient les classes liées à la représentation du plateau de jeu, y compris les cellules et les vues pour chaque type de jeu.
 
 - **gameLogic/** : Contient les classes qui gèrent la logique de chaque jeu, comme les règles et les vérifications de victoire.
 

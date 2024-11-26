@@ -1,7 +1,7 @@
 package gomoku.board;
 
-import tictactoe.board.Cell;
-import tictactoe.players.Player;
+import tictactoe.model.Cell;
+import tictactoe.model.players.Player;
 import gomoku.GomokuController;
 
 public class GomokuView {

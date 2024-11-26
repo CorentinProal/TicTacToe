@@ -1,6 +1,6 @@
 package gomoku.players;
 
-import tictactoe.TicTacToeLogic;
+import tictactoe.model.TicTacToeLogic;
 import gomoku.GomokuLogic;
 
 import java.util.Random;
