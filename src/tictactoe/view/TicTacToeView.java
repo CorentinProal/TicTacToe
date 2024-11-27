@@ -20,9 +20,9 @@ public class TicTacToeView {
         System.out.print(" Option  1 - 3  : ");
     }
 
-    public void afficherErreurMenu() {
-        System.out.println(" Veuillez choisir entre 1 et 3 ");
-    }
+//    public void afficherErreurMenu() {
+//        System.out.println(" Veuillez choisir entre 1 et 3 ");
+//    }
 
     public void afficherDemanderLigne() {
         System.out.print("Ligne ( 0 - 2 ) : ");

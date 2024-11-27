@@ -21,6 +21,7 @@ public abstract class BoardGame {
     public Cell[][] getBoard() {
         return board;
     }
+
     public abstract boolean isValidMove(int[] move);
     public abstract boolean isOver();
 } 

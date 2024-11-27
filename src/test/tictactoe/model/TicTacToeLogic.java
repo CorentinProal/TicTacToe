@@ -1,5 +1,4 @@
 package tictactoe.model;
-
 import tictactoe.model.players.Player;
 
 public class TicTacToeLogic extends BoardGame {
@@ -36,7 +35,6 @@ public class TicTacToeLogic extends BoardGame {
 
     @Override
     public boolean isOver() {
-
         // Vérif lignes
         for (int i = 0; i < size; i++) {
             if (exist(i, 0) && !board[i][0].isEmpty() &&
@@ -55,73 +53,58 @@ public class TicTacToeLogic extends BoardGame {
             }
         }
 
-        //Vérif Diag
         if (exist(0, 0) && !board[0][0].isEmpty() &&
                 board[0][0].getState() == board[1][1].getState() &&
                 board[0][0].getState() == board[2][2].getState()) {
-            return true; // Pour diagonnale \
+            return true;
         }
         if (exist(0, 2) && !board[0][2].isEmpty() &&
                 board[0][2].getState() == board[1][1].getState() &&
                 board[0][2].getState() == board[2][0].getState()) {
-            return true; // Pour diagonnale /
+            return true;
         }
 
+        // Vérifiez si le plateau est plein
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (board[i][j].isEmpty()) {
-                    return false;
+                    return false; // Il y a encore des cases vides
                 }
             }
         }
 
-        return true;
+        return true; // Plateau plein, match nul
+    }
+
+    public Player getWinner() {
+        // Vérifiez les lignes, colonnes et diagonales pour un gagnant
+        for (int i = 0; i < size; i++) {
+            if (exist(i, 0) && !board[i][0].isEmpty() &&
+                    board[i][0].getState() == board[i][1].getState() &&
+                    board[i][0].getState() == board[i][2].getState()) {
+                return (board[i][0].getState() == CellState.X) ? player1 : player2;
+            }
+        }
+
+        for (int j = 0; j < size; j++) {
+            if (exist(0, j) && !board[0][j].isEmpty() &&
+                    board[0][j].getState() == board[1][j].getState() &&
+                    board[0][j].getState() == board[2][j].getState()) {
+                return (board[0][j].getState() == CellState.X) ? player1 : player2;
+            }
+        }
+
+        if (exist(0, 0) && !board[0][0].isEmpty() &&
+                board[0][0].getState() == board[1][1].getState() &&
+                board[0][0].getState() == board[2][2].getState()) {
+            return (board[0][0].getState() == CellState.X) ? player1 : player2;
+        }
+        if (exist(0, 2) && !board[0][2].isEmpty() &&
+                board[0][2].getState() == board[1][1].getState() &&
+                board[0][2].getState() == board[2][0].getState()) {
+            return (board[0][2].getState() == CellState.X) ? player1 : player2;
+        }
+
+        return null; // Aucun gagnant
     }
 }
-
-
-
-//public boolean isWinningMove(int row, int col, Status status) {
-//    int winRangeScanne = board.getWinRangeScanne(); // Le nombre de cases consécutives nécessaires pour gagner
-//
-//    // Vérifier la ligne
-//    if (checkDirection(row, col, status, 0, 1, winRangeScanne)) return true; // Horizontal
-//    // Vérifier la colonne
-//    if (checkDirection(row, col, status, 1, 0, winRangeScanne)) return true; // Vertical
-//    // Vérifier diagonale principale
-//    if (checkDirection(row, col, status, 1, 1, winRangeScanne)) return true; // Diagonale principale
-//    // Vérifier diagonale secondaire
-//    if (checkDirection(row, col, status, 1, -1, winRangeScanne)) return true; // Diagonale secondaire
-//
-//    return false;
-//}
-//
-//// Méthode pour vérifier une direction spécifique (horizontal, vertical, diagonale)
-//private boolean checkDirection(int row, int col, Status status, int dRow, int dCol, int winRangeScanne) {
-//    int count = 1; // La case actuelle compte déjà pour 1
-//
-//    // Compter les cases dans la direction positive (dRow, dCol)
-//    for (int i = 1; i < winRangeScanne; i++) {
-//        int newRow = row + i * dRow;
-//        int newCol = col + i * dCol;
-//        if (newRow < 0 || newRow >= board.getSize() || newCol < 0 || newCol >= board.getSize() ||
-//                !board.getCell(newRow, newCol).getStatus().equals(status)) {
-//            break;
-//        }
-//        count++;
-//    }
-//
-//    // Compter les cases dans la direction négative (-dRow, -dCol)
-//    for (int i = 1; i < winRangeScanne; i++) {
-//        int newRow = row - i * dRow;
-//        int newCol = col - i * dCol;
-//        if (newRow < 0 || newRow >= board.getSize() || newCol < 0 || newCol >= board.getSize() ||
-//                !board.getCell(newRow, newCol).getStatus().equals(status)) {
-//            break;
-//        }
-//        count++;
-//    }
-//
-//    // Vérifier si on a atteint le nombre requis de cases consécutives
-//    return count >= winRangeScanne;
-//}
