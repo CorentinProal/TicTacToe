@@ -17,38 +17,36 @@ public class TicTacToeController {
 
     public void startGame() {
         view.afficherDebutPartie();
-        
+
         while (!model.isOver()) {
             view.afficherPlateau(model.getBoard());
             view.afficherTourJoueur(model.getCurrentPlayer());
-            
+
             int[] move;
             do {
                 view.afficherDemanderLigne();
                 view.afficherDemanderColonne();
                 move = model.getCurrentPlayer().getMove(model);
-                
                 if (!model.isValidMove(move)) {
-                    if (getModel().isValidMove(move)) {
-                        view.afficherErreurSaisie();
-                    } else {
-                        view.afficherErreurCoup();
-                    }
+                    view.afficherErreurSaisie();
                 }
             } while (!model.isValidMove(move));
-            
+
             model.setOwner(move, model.getCurrentPlayer());
-            
+
             if (model.isOver()) {
                 view.afficherPlateau(model.getBoard());
                 view.afficherVictoire(model.getCurrentPlayer());
                 break;
             }
-            
+
             model.switchPlayer();
         }
         view.afficherFinPartie();
     }
+
+
+
 
     public TicTacToeLogic getModel() {
         return model;
@@ -67,11 +65,10 @@ public class TicTacToeController {
             new ArtificialPlayer(" O ")
         );
     }
-
     public static TicTacToeController createAIVsAI() {
         return new TicTacToeController(
-            new ArtificialPlayer(" X "),
-            new ArtificialPlayer(" O ")
+                new ArtificialPlayer(" X "),
+                new ArtificialPlayer(" O ")
         );
     }
 } 

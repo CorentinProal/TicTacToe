@@ -15,18 +15,33 @@ public class ArtificialPlayer extends Player {
 
     @Override
     public int[] getMove(Object logic) {
-        return new int[0];
+        return getMove((TicTacToeLogic) logic);
     }
 
-    @Override
-    public int[] getMove(TicTacToeLogic logic) {
-        TicTacToeView.afficherCoupOrdinateur();
-        int[] move = new int[2];
-        do {
-            move[0] = random.nextInt(3);
-            move[1] = random.nextInt(3);
-        } while (!logic.isValidMove(move));
-        
-        return move;
-    }
+//    @Override
+//    public int[] getMove(TicTacToeLogic logic) {
+//        TicTacToeView.afficherCoupOrdinateur();
+//        int[] move = new int[2];
+//        do {
+//            move[0] = random.nextInt(3);
+//            move[1] = random.nextInt(3);
+////            System.out.println("Mouvement généré par l'IA: " + move[0] + ", " + move[1]);
+//        } while (!logic.isValidMove(move));
+//
+//        return move;
+//    }
+@Override
+public int[] getMove(TicTacToeLogic logic) {
+    System.out.println("IA (" + getRepresentation() + ") réfléchit à son prochain coup...");
+    int[] move = new int[2];
+    do {
+        move[0] = random.nextInt(3);
+        move[1] = random.nextInt(3);
+        System.out.println("IA propose : [" + move[0] + ", " + move[1] + "]");
+    } while (!logic.isValidMove(move));
+
+    System.out.println("IA valide son coup : [" + move[0] + ", " + move[1] + "]");
+    return move;
+}
+
 }
