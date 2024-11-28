@@ -27,13 +27,8 @@ public class TicTacToeController {
                 view.afficherDemanderLigne();
                 view.afficherDemanderColonne();
                 move = model.getCurrentPlayer().getMove(model);
-
-                System.out.println("Mouvement proposé: " + move[0] + ", " + move[1]);
-
                 if (!model.isValidMove(move)) {
                     view.afficherErreurSaisie();
-                } else {
-                    view.afficherErreurCoup();
                 }
             } while (!model.isValidMove(move));
 
@@ -72,7 +67,7 @@ public class TicTacToeController {
     }
     public static TicTacToeController createAIVsAI() {
         return new TicTacToeController(
-                new ArtificialPlayer(" x "),
+                new ArtificialPlayer(" X "),
                 new ArtificialPlayer(" O ")
         );
     }

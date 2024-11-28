@@ -11,39 +11,40 @@ public class UserInteract {
 
         while (!validChoice) {
             try {
-                choice = scanner.nextInt();
-                if (choice >= 0 && choice <= 2) {
+                choice = Integer.parseInt(scanner.nextLine());
+                if (choice >= 1 && choice <= 3) {
                     validChoice = true;
+                } else {
+                    System.out.println("Veuillez choisir un nombre entre 1 et 3 !");
                 }
-            } catch (Exception e) {
-                scanner.nextLine();
+            } catch (NumberFormatException e) {
+                System.out.println("Veuillez entrer un nombre valide 1, 2 ou 3  !");
             }
         }
         return choice;
     }
+
     public static int[] obtenirCoupJoueur() {
         int[] move = new int[2];
-        try {
-            move[0] = scanner.nextInt();
-            move[1] = scanner.nextInt();
-            System.out.println("Coup saisi : [" + move[0] + ", " + move[1] + "]");
-        } catch (Exception e) {
-            scanner.nextLine();
-            System.out.println("Erreur de saisie. Veuillez réessayer.");
+        boolean validInput = false;
+        while (!validInput) {
+            try {
+
+                move[0] = Integer.parseInt(scanner.nextLine());
+                move[1] = Integer.parseInt(scanner.nextLine());
+
+                if (move[0] >= 0 && move[0] <= 2 && move[1] >= 0 && move[1] <= 2) {
+                    validInput = true;
+                } else {
+                    System.out.println("Choisissez un chiffre entre 0 et 2 !");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Erreur de saisie. Veuillez entrer un nombre entre 0 et 2 !");
+            }
         }
+        System.out.println("Coup saisi : [" + move[0] + ", " + move[1] + "]");
         return move;
     }
-
-//    public static int[] obtenirCoupJoueur() {
-//        int[] move = new int[2];
-//        try {
-//            move[0] = scanner.nextInt();
-//            move[1] = scanner.nextInt();
-//        } catch (Exception e) {
-//            scanner.nextLine();
-//        }
-//        return move;
-//    }
 
     public static void fermerScanner() {
         scanner.close();

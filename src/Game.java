@@ -51,7 +51,18 @@ public class Game {
         System.out.println("Choisissez votre jeu :");
         System.out.println("1. TicTacToe");
         System.out.println("2. Gomoku");
-        int gameChoice = UserInteract.obtenirChoixMenu();
+        System.out.println("3. Quitter");
+        int gameChoice = 0;
+
+        boolean validGameChoice = false;
+        while (!validGameChoice) {
+            try {
+                gameChoice = UserInteract.obtenirChoixMenu();
+                validGameChoice = true;
+            } catch (Exception e) {
+                System.out.println("Veuillez entrer 1, 2 ou 3 ");
+            }
+        }
 
         if (gameChoice == 1) {
             TicTacToeController game = launcher.createTicTacToeGame();
@@ -59,6 +70,8 @@ public class Game {
         } else if (gameChoice == 2) {
             GomokuController game = launcher.createGomokuGame();
             game.startGame();
+        } else if (gameChoice == 3) {
+            System.out.println("C'est Ciao !");
         }
 
         UserInteract.fermerScanner();
