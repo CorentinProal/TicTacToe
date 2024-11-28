@@ -76,4 +76,9 @@ public class Game {
 
         UserInteract.fermerScanner();
     }
+
+    public static void main(String[] args) {
+        play();
+    }
+
 }

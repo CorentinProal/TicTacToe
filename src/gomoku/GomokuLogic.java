@@ -38,46 +38,68 @@ public class GomokuLogic extends BoardGame {
 
     @Override
     public boolean isOver() {
-
-        // Vérif lignes
+        // Vérification des lignes
         for (int i = 0; i < size; i++) {
-            if (exist(i, 0) && !board[i][0].isEmpty() &&
-                    board[i][0].getState() == board[i][1].getState() &&
-                    board[i][0].getState() == board[i][2].getState()) {
-                return true;
-            }
-        }
-
-        // Vérif Colonne
-        for (int j = 0; j < size; j++) {
-            if (exist(0, j) && !board[0][j].isEmpty() &&
-                    board[0][j].getState() == board[1][j].getState() &&
-                    board[0][j].getState() == board[2][j].getState()) {
-                return true;
-            }
-        }
-
-        //Vérif Diag
-        if (exist(0, 0) && !board[0][0].isEmpty() &&
-                board[0][0].getState() == board[1][1].getState() &&
-                board[0][0].getState() == board[2][2].getState()) {
-            return true; // Pour diagonnale \
-        }
-        if (exist(0, 2) && !board[0][2].isEmpty() &&
-                board[0][2].getState() == board[1][1].getState() &&
-                board[0][2].getState() == board[2][0].getState()) {
-            return true; // Pour diagonnale /
-        }
-
-        // Vérif Match nul
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (board[i][j].isEmpty()) {
-                    return false; // Si il y a encore des cases vides
+            for (int j = 0; j <= size - 5; j++) {
+                if (!board[i][j].isEmpty() &&
+                        board[i][j].getState() == board[i][j + 1].getState() &&
+                        board[i][j].getState() == board[i][j + 2].getState() &&
+                        board[i][j].getState() == board[i][j + 3].getState() &&
+                        board[i][j].getState() == board[i][j + 4].getState()) {
+                    return true;
                 }
             }
         }
 
-        return true; // Match nul
+
+        for (int j = 0; j < size; j++) {
+            for (int i = 0; i <= size - 5; i++) {
+                if (!board[i][j].isEmpty() &&
+                        board[i][j].getState() == board[i + 1][j].getState() &&
+                        board[i][j].getState() == board[i + 2][j].getState() &&
+                        board[i][j].getState() == board[i + 3][j].getState() &&
+                        board[i][j].getState() == board[i + 4][j].getState()) {
+                    return true;
+                }
+            }
+        }
+
+        // Vérification des diagonales principales (\)
+        for (int i = 0; i <= size - 5; i++) {
+            for (int j = 0; j <= size - 5; j++) {
+                if (!board[i][j].isEmpty() &&
+                        board[i][j].getState() == board[i + 1][j + 1].getState() &&
+                        board[i][j].getState() == board[i + 2][j + 2].getState() &&
+                        board[i][j].getState() == board[i + 3][j + 3].getState() &&
+                        board[i][j].getState() == board[i + 4][j + 4].getState()) {
+                    return true;
+                }
+            }
+        }
+
+        // Vérification des diagonales secondaires (/)
+        for (int i = 0; i <= size - 5; i++) {
+            for (int j = 4; j < size; j++) {
+                if (!board[i][j].isEmpty() &&
+                        board[i][j].getState() == board[i + 1][j - 1].getState() &&
+                        board[i][j].getState() == board[i + 2][j - 2].getState() &&
+                        board[i][j].getState() == board[i + 3][j - 3].getState() &&
+                        board[i][j].getState() == board[i + 4][j - 4].getState()) {
+                    return true;
+                }
+            }
+        }
+
+        // Vérification d'un match nul
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (board[i][j].isEmpty()) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
+
 }

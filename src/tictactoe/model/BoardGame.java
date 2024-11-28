@@ -4,6 +4,7 @@ public abstract class BoardGame {
     protected Cell[][] board;
     protected final int size;
 
+
     public BoardGame(int size) {
         this.size = size;
         this.board = new Cell[size][size];
