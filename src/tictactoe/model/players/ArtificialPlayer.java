@@ -15,7 +15,7 @@ public class ArtificialPlayer extends Player {
 
     @Override
     public int[] getMove(Object logic) {
-        return new int[0];
+        return getMove((TicTacToeLogic) logic);
     }
 
     @Override
@@ -25,6 +25,7 @@ public class ArtificialPlayer extends Player {
         do {
             move[0] = random.nextInt(3);
             move[1] = random.nextInt(3);
+            System.out.println("Mouvement généré par l'IA: " + move[0] + ", " + move[1]);
         } while (!logic.isValidMove(move));
         
         return move;

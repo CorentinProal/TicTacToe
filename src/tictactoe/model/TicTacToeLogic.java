@@ -23,8 +23,7 @@ public class TicTacToeLogic extends BoardGame {
     }
 
     public void setOwner(int[] move, Player player) {
-        CellState newState = player.getRepresentation().equals(" X ") ? CellState.X : CellState.O;
-        board[move[0]][move[1]].setState(newState);
+        board[move[0]][move[1]].setState(player.getSymbol());
     }
 
     @Override

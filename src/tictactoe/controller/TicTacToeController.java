@@ -19,6 +19,7 @@ public class TicTacToeController {
         view.afficherDebutPartie();
         
         while (!model.isOver()) {
+//            System.out.println("État du jeu : " + model.getBoard());
             view.afficherPlateau(model.getBoard());
             view.afficherTourJoueur(model.getCurrentPlayer());
             
@@ -28,12 +29,12 @@ public class TicTacToeController {
                 view.afficherDemanderColonne();
                 move = model.getCurrentPlayer().getMove(model);
                 
+                System.out.println("Mouvement proposé: " + move[0] + ", " + move[1]);
+                
                 if (!model.isValidMove(move)) {
-                    if (getModel().isValidMove(move)) {
-                        view.afficherErreurSaisie();
-                    } else {
-                        view.afficherErreurCoup();
-                    }
+                    view.afficherErreurSaisie();
+                } else {
+                    view.afficherErreurCoup();
                 }
             } while (!model.isValidMove(move));
             
