@@ -25,12 +25,15 @@ public class TicTacToeLogic extends BoardGame {
     public void setOwner(int[] move, Player player) {
         board[move[0]][move[1]].setState(player.getSymbol());
     }
-
     @Override
     public boolean isValidMove(int[] move) {
-        return move[0] >= 0 && move[0] < size &&
+        boolean valid = move[0] >= 0 && move[0] < size &&
                 move[1] >= 0 && move[1] < size &&
                 board[move[0]][move[1]].isEmpty();
+        if (!valid) {
+            System.out.println("Débogage : le coup [" + move[0] + ", " + move[1] + "] est invalide.");
+        }
+        return valid;
     }
 
     @Override
