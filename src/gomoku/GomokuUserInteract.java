@@ -1,8 +1,8 @@
-package tictactoe;
+package gomoku;
 
 import java.util.Scanner;
 
-public class UserInteract {
+public class GomokuUserInteract {
     private static Scanner scanner = new Scanner(System.in);
 
     public static int obtenirChoixMenu() {

@@ -1,13 +1,14 @@
-package tictactoe;
+package tictactoe.controller;
 
-import tictactoe.players.Player;
-import tictactoe.players.HumanPlayer;
-import tictactoe.players.ArtificialPlayer;
-import tictactoe.board.TicTacToeView;
+import tictactoe.model.TicTacToeLogic;
+import tictactoe.model.players.Player;
+import tictactoe.model.players.HumanPlayer;
+import tictactoe.model.players.ArtificialPlayer;
+import tictactoe.view.TicTacToeView;
 
 public class TicTacToeController {
-    private TicTacToeLogic model;
-    private TicTacToeView view;
+    private final TicTacToeLogic model;
+    private final TicTacToeView view;
 
     public TicTacToeController(Player player1, Player player2) {
         this.model = new TicTacToeLogic(player1, player2);
@@ -28,7 +29,11 @@ public class TicTacToeController {
                 move = model.getCurrentPlayer().getMove(model);
                 
                 if (!model.isValidMove(move)) {
-                    view.afficherErreurCoup();
+                    if (getModel().isValidMove(move)) {
+                        view.afficherErreurSaisie();
+                    } else {
+                        view.afficherErreurCoup();
+                    }
                 }
             } while (!model.isValidMove(move));
             

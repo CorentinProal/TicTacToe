@@ -1,6 +1,7 @@
-package tictactoe.players;
+package tictactoe.model.players;
 
-import tictactoe.TicTacToeLogic;
+import tictactoe.controller.UserInteract;
+import tictactoe.model.TicTacToeLogic;
 
 public class HumanPlayer extends Player {
     public HumanPlayer(String representation) {
@@ -14,6 +15,6 @@ public class HumanPlayer extends Player {
 
     @Override
     public int[] getMove(TicTacToeLogic logic) {
-        return tictactoe.UserInteract.obtenirCoupJoueur();
+        return UserInteract.obtenirCoupJoueur();
     }
 } 

@@ -1,8 +1,9 @@
-package gomoku.players;
+package gomoku;
 
-import gomoku.GomokuLogic;
-import gomoku.GomokuPlayer;
 import gomoku.board.GomokuView;
+import gomoku.players.GomokuArtificialPlayer;
+import gomoku.players.GomokuHumanPlayer;
+import gomoku.players.GomokuPlayer;
 
 public class GomokuController {
     private GomokuLogic model;

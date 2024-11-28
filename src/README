@@ -8,9 +8,11 @@ Le projet est organisé en plusieurs packages pour une meilleure clarté et modu
   - **controllers/** : Contient les contrôleurs pour chaque type de jeu (gomoku et TicTacToe).
   - **players/** : Contient les classes représentant les joueurs, qu'ils soient humains ou artificiels.
 
-- **tictactoe.board/** : Contient les classes liées à la représentation du plateau de jeu, y compris les cellules et les vues pour chaque type de jeu.
+- **tictactoe.model/** : Contient les classes liées à la représentation du plateau de jeu, y compris les cellules et les vues pour chaque type de jeu.
 
 - **gameLogic/** : Contient les classes qui gèrent la logique de chaque jeu, comme les règles et les vérifications de victoire.
+
+- **gomoku/** : Contient les classes spécifiques au jeu Gomoku, y compris la logique du jeu, les joueurs, et la vue.
 
 ## Classes Principales
 
@@ -25,9 +27,9 @@ La classe `GameLauncher` gère le lancement du jeu.
  Elle affiche un menu pour que l'utilisateur puisse choisir le jeu qu'il souhaite jouer.
   En fonction du choix de l'utilisateur, elle crée une instance du contrôleur de jeu approprié et lance la partie.
 
-### tictactoe.UserInteract
+### gomoku.GomokuUserInteract
 
-La classe `tictactoe.UserInteract` est utilisée pour gérer l'interaction avec l'utilisateur, y compris la récupération des choix de menu et la fermeture des ressources.
+La classe `gomoku.GomokuUserInteract` est utilisée pour gérer l'interaction avec l'utilisateur, y compris la récupération des choix de menu et la fermeture des ressources.
 
 ### Controllers
 
@@ -39,7 +41,10 @@ Les classes dans le package `controllers` (comme `TicTacToeController` et `Gomok
 Les classes dans le package `players` représentent les différents types de joueurs.
  Cela inclut les joueurs humains et artificiels, permettant ainsi une flexibilité dans le type de jeu.
 
-## Conclusion
+### Gomoku
 
-Cette structure permet de maintenir le code organisé et facile à comprendre.
- Chaque classe a une responsabilité claire, ce qui facilite la maintenance et l'évolution du projet.
+- **GomokuLogic** : Gère la logique du jeu Gomoku, y compris les règles et les vérifications de victoire.
+- **GomokuPlayer** : Classe abstraite représentant un joueur dans le jeu Gomoku.
+- **GomokuHumanPlayer** : Représente un joueur humain dans le jeu Gomoku.
+- **GomokuArtificialPlayer** : Représente un joueur artificiel qui joue de manière aléatoire dans le jeu Gomoku.
+- **GomokuView** : Gère l'affichage et l'interface utilisateur pour le jeu Gomoku.

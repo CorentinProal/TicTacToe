@@ -1,8 +1,9 @@
-import tictactoe.UserInteract;
-import tictactoe.board.TicTacToeView;
+import gomoku.GomokuUserInteract;
+import tictactoe.view.TicTacToeView;
 import gomoku.board.GomokuView;
-import gomoku.players.GomokuController;
-import tictactoe.TicTacToeController;
+import gomoku.GomokuController;
+import tictactoe.controller.TicTacToeController;
+import tictactoe.controller.UserInteract;
 
 public class Game {
     public TicTacToeController createTicTacToeGame() {
@@ -27,7 +28,7 @@ public class Game {
 
     public GomokuController createGomokuGame() {
         GomokuView.afficherMenuPrincipal();
-        int choice = UserInteract.obtenirChoixMenu();
+        int choice = GomokuUserInteract.obtenirChoixMenu();
         
         GomokuController game = null;
         switch (choice) {
@@ -43,5 +44,23 @@ public class Game {
         }
         
         return game;
+    }
+
+    public static void play() {
+        Game launcher = new Game();
+        System.out.println("Choisissez votre jeu :");
+        System.out.println("1. TicTacToe");
+        System.out.println("2. Gomoku");
+        int gameChoice = UserInteract.obtenirChoixMenu();
+
+        if (gameChoice == 1) {
+            TicTacToeController game = launcher.createTicTacToeGame();
+            game.startGame();
+        } else if (gameChoice == 2) {
+            GomokuController game = launcher.createGomokuGame();
+            game.startGame();
+        }
+
+        UserInteract.fermerScanner();
     }
 }

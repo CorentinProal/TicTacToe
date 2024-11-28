@@ -1,9 +1,8 @@
 package gomoku.players;
 
-import tictactoe.UserInteract;
-import tictactoe.TicTacToeLogic;
+import gomoku.GomokuUserInteract;
+import tictactoe.model.TicTacToeLogic;
 import gomoku.GomokuLogic;
-import gomoku.GomokuPlayer;
 
 public class GomokuHumanPlayer extends GomokuPlayer {
     public GomokuHumanPlayer(String representation) {
@@ -12,7 +11,7 @@ public class GomokuHumanPlayer extends GomokuPlayer {
 
     @Override
     public int[] getMove(GomokuLogic logic) {
-        return UserInteract.obtenirCoupJoueur();
+        return GomokuUserInteract.obtenirCoupJoueur();
     }
 
     @Override

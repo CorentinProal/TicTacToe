@@ -1,13 +1,11 @@
-package tictactoe;
+package tictactoe.model;
 
-import tictactoe.board.BoardGame;
-import tictactoe.board.CellState;
-import tictactoe.players.Player;
+import tictactoe.model.players.Player;
 
 public class TicTacToeLogic extends BoardGame {
     private Player currentPlayer;
-    private Player player1;
-    private Player player2;
+    private final Player player1;
+    private final Player player2;
 
     public TicTacToeLogic(Player player1, Player player2) {
         super(3);
@@ -69,15 +67,61 @@ public class TicTacToeLogic extends BoardGame {
             return true; // Pour diagonnale /
         }
 
-        // Vérif Match nul
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (board[i][j].isEmpty()) {
-                    return false; // Si il y a encore des cases vides
+                    return false;
                 }
             }
         }
 
-        return true; // Match nul
+        return true;
     }
 }
+
+
+
+//public boolean isWinningMove(int row, int col, Status status) {
+//    int winRangeScanne = board.getWinRangeScanne(); // Le nombre de cases consécutives nécessaires pour gagner
+//
+//    // Vérifier la ligne
+//    if (checkDirection(row, col, status, 0, 1, winRangeScanne)) return true; // Horizontal
+//    // Vérifier la colonne
+//    if (checkDirection(row, col, status, 1, 0, winRangeScanne)) return true; // Vertical
+//    // Vérifier diagonale principale
+//    if (checkDirection(row, col, status, 1, 1, winRangeScanne)) return true; // Diagonale principale
+//    // Vérifier diagonale secondaire
+//    if (checkDirection(row, col, status, 1, -1, winRangeScanne)) return true; // Diagonale secondaire
+//
+//    return false;
+//}
+//
+//// Méthode pour vérifier une direction spécifique (horizontal, vertical, diagonale)
+//private boolean checkDirection(int row, int col, Status status, int dRow, int dCol, int winRangeScanne) {
+//    int count = 1; // La case actuelle compte déjà pour 1
+//
+//    // Compter les cases dans la direction positive (dRow, dCol)
+//    for (int i = 1; i < winRangeScanne; i++) {
+//        int newRow = row + i * dRow;
+//        int newCol = col + i * dCol;
+//        if (newRow < 0 || newRow >= board.getSize() || newCol < 0 || newCol >= board.getSize() ||
+//                !board.getCell(newRow, newCol).getStatus().equals(status)) {
+//            break;
+//        }
+//        count++;
+//    }
+//
+//    // Compter les cases dans la direction négative (-dRow, -dCol)
+//    for (int i = 1; i < winRangeScanne; i++) {
+//        int newRow = row - i * dRow;
+//        int newCol = col - i * dCol;
+//        if (newRow < 0 || newRow >= board.getSize() || newCol < 0 || newCol >= board.getSize() ||
+//                !board.getCell(newRow, newCol).getStatus().equals(status)) {
+//            break;
+//        }
+//        count++;
+//    }
+//
+//    // Vérifier si on a atteint le nombre requis de cases consécutives
+//    return count >= winRangeScanne;
+//}

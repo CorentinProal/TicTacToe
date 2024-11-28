@@ -1,8 +1,8 @@
 package gomoku.board;
 
-import tictactoe.board.Cell;
-import tictactoe.players.Player;
-import gomoku.players.GomokuController;
+import tictactoe.model.Cell;
+import tictactoe.model.players.Player;
+import gomoku.GomokuController;
 
 public class GomokuView {
     private GomokuController controller;
@@ -21,7 +21,7 @@ public class GomokuView {
     }
 
     public void afficherErreurMenu() {
-        System.out.println(" Veuillez choisir entre 1 et 3 ");
+        System.out.println(" Veuillez choisir entre 0 et 14 ");
     }
 
     public void afficherDemanderLigne() {
@@ -42,7 +42,6 @@ public class GomokuView {
     }
 
     public void afficherPlateau(Cell[][] board) {
-//        String separator = "-".repeat(cols * 4 + 1);
         int size = 15;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {

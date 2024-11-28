@@ -1,6 +1,7 @@
-package gomoku;
+package gomoku.players;
 
-import tictactoe.players.Player;
+import gomoku.GomokuLogic;
+import tictactoe.model.players.Player;
 
 public abstract class GomokuPlayer extends Player<GomokuLogic> {
     public GomokuPlayer(String representation) {

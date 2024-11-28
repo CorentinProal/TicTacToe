@@ -1,10 +1,10 @@
-package tictactoe.players;
+package tictactoe.model.players;
 
-import tictactoe.board.CellState;
-import tictactoe.TicTacToeLogic;
+import tictactoe.model.CellState;
+import tictactoe.model.TicTacToeLogic;
 
 public abstract class Player<T> {
-    private CellState symbol;
+    private final CellState symbol;
 
     public Player(String representation) {
         this.symbol = representation.trim().equals("X") ? CellState.X : CellState.O;
