@@ -51,7 +51,7 @@ public class Game {
         System.out.println("Choisissez votre jeu :");
         System.out.println("1. TicTacToe");
         System.out.println("2. Gomoku");
-        int gameChoice = GomokuUserInteract.obtenirChoixMenu();
+        int gameChoice = UserInteract.obtenirChoixMenu();
 
         if (gameChoice == 1) {
             TicTacToeController game = launcher.createTicTacToeGame();
@@ -61,6 +61,6 @@ public class Game {
             game.startGame();
         }
 
-        GomokuUserInteract.fermerScanner();
+        UserInteract.fermerScanner();
     }
 }

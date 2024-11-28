@@ -1,6 +1,6 @@
 package tictactoe.model.players;
 
-import gomoku.GomokuUserInteract;
+import tictactoe.controller.UserInteract;
 import tictactoe.model.TicTacToeLogic;
 
 public class HumanPlayer extends Player {
@@ -15,6 +15,6 @@ public class HumanPlayer extends Player {
 
     @Override
     public int[] getMove(TicTacToeLogic logic) {
-        return GomokuUserInteract.obtenirCoupJoueur();
+        return UserInteract.obtenirCoupJoueur();
     }
 } 

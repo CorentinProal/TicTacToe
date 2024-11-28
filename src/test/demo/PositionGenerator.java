@@ -1,6 +1,6 @@
-package demo;
-
-public interface PositionGenerator {
-
-    int getPosition(int max);
-}
+//package demo;
+//
+//public interface PositionGenerator {
+//
+//    int getPosition(int max);
+//}

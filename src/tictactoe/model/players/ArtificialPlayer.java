@@ -30,22 +30,3 @@ public class ArtificialPlayer extends Player {
         return move;
     }
 }
-
-/*
-Cette classe représente un joueur artificiel qui joue des coups aléatoires.
-
-ATTRIBUTS :
-- random : générateur de nombres aléatoires
-- logic : référence vers la logique du jeu pour vérifier les coups valides
-
-CONSTRUCTEUR :
-- Initialise le générateur aléatoire
-- Stocke la référence vers la logique du jeu
-
-MÉTHODES :
-getMove() :
-- Génère des coordonnées aléatoires
-- Vérifie si le coup est valide
-- Continue jusqu'à trouver une case libre
-- Retourne les coordonnées du coup choisi
-*/ 

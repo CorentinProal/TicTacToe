@@ -26,7 +26,7 @@ public class TicTacToeController {
             do {
                 view.afficherDemanderLigne();
                 view.afficherDemanderColonne();
-                move = UserInteract.obtenirCoupJoueur();
+                move = model.getCurrentPlayer().getMove(model);
                 
                 if (!model.isValidMove(move)) {
                     if (getModel().isValidMove(move)) {
