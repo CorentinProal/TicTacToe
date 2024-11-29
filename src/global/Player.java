@@ -1,7 +1,6 @@
-package tictactoe.model.players;
+package global;
 
-import tictactoe.model.CellState;
-import tictactoe.model.TicTacToeLogic;
+import tictactoe.TicTacToeLogic;
 
 public abstract class Player<T> {
     private final CellState symbol;
@@ -15,6 +14,10 @@ public abstract class Player<T> {
     }
 
     public CellState getSymbol() {
+        return symbol;
+    }
+
+    public CellState getCellState() {
         return symbol;
     }
 

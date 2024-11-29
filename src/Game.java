@@ -1,15 +1,16 @@
-import gomoku.GomokuUserInteract;
-import tictactoe.view.TicTacToeView;
-import gomoku.board.GomokuView;
+import gomoku.GomokuView;
 import gomoku.GomokuController;
-import tictactoe.controller.TicTacToeController;
-import tictactoe.controller.UserInteract;
+import gomoku.GomokuUserInteract;
+
+import tictactoe.UserInteract;
+import tictactoe.TicTacToeView;
+import tictactoe.TicTacToeController;
 
 public class Game {
     public TicTacToeController createTicTacToeGame() {
         TicTacToeView.afficherMenuPrincipal();
         int choice = UserInteract.obtenirChoixMenu();
-        
+
         TicTacToeController game = null;
         switch (choice) {
             case 1:
@@ -22,14 +23,14 @@ public class Game {
                 game = TicTacToeController.createAIVsAI();
                 break;
         }
-        
+
         return game;
     }
 
     public GomokuController createGomokuGame() {
         GomokuView.afficherMenuPrincipal();
         int choice = GomokuUserInteract.obtenirChoixMenu();
-        
+
         GomokuController game = null;
         switch (choice) {
             case 1:
@@ -42,7 +43,7 @@ public class Game {
                 game = GomokuController.createAIVsAI();
                 break;
         }
-        
+
         return game;
     }
 
@@ -76,4 +77,9 @@ public class Game {
 
         UserInteract.fermerScanner();
     }
+
+    public static void main(String[] args) {
+        play();
+    }
+
 }

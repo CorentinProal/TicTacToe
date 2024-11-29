@@ -1,13 +1,13 @@
-package gomoku;
+package tictactoe;
 
 import global.Board;
 import global.CellState;
 
-public class GomokuLogic {
+public class TicTacToeLogic {
     private final Board board;
     private boolean isOver;
 
-    public GomokuLogic(Board board) {
+    public TicTacToeLogic(Board board) {
         this.board = board;
         isOver = false;
     }
@@ -46,7 +46,8 @@ public class GomokuLogic {
     }
 
     private boolean checkDirection(int row, int col, CellState state, int dRow, int dCol, int winnerRange) {
-        int count = 1;
+        int count = 1; // La case actuelle compte déjà pour 1
+        // Compter dans la direction positive
         for (int i = 1; i < winnerRange; i++) {
             int newRow = row + i * dRow;
             int newCol = col + i * dCol;
@@ -56,6 +57,7 @@ public class GomokuLogic {
             }
             count++;
         }
+        // Compter dans la direction négative
         for (int i = 1; i < winnerRange; i++) {
             int newRow = row - i * dRow;
             int newCol = col - i * dCol;
@@ -68,15 +70,15 @@ public class GomokuLogic {
         return count >= winnerRange;
     }
 
-    public Board getBoard() {
-        return board;
-    }
-
     public boolean isGameOver() {
         return isOver;
     }
 
     public void setGameOver(boolean isOver) {
         this.isOver = isOver;
+    }
+
+    public Board getBoard() {
+        return board;
     }
 }

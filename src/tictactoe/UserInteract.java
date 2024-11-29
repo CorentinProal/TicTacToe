@@ -1,4 +1,4 @@
-package tictactoe.controller;
+package tictactoe;
 
 import java.util.Scanner;
 

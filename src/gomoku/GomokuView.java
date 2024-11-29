@@ -1,8 +1,7 @@
-package gomoku.board;
+package gomoku;
 
-import tictactoe.model.Cell;
-import tictactoe.model.players.Player;
-import gomoku.GomokuController;
+import global.Cell;
+import global.Player;
 
 public class GomokuView {
     private GomokuController controller;
@@ -61,6 +60,10 @@ public class GomokuView {
 
     public void afficherTourJoueur(Player player) {
         System.out.println("\nAu tour du joueur" + player.getRepresentation());
+    }
+
+    public void afficherErreurSaisie() {
+        System.out.println("Veuillez entrer un nombre entre 0 et 14 !");
     }
 
     public void afficherVictoire(Player player) {

@@ -1,4 +1,4 @@
-package tictactoe.model;
+package global;
 
 public class Cell {
     private CellState state;

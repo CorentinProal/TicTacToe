@@ -1,8 +1,7 @@
-package tictactoe.view;
+package tictactoe;
 
-import tictactoe.controller.TicTacToeController;
-import tictactoe.model.Cell;
-import tictactoe.model.players.Player;
+import global.Board;
+import global.Player;
 
 public class TicTacToeView {
     private final TicTacToeController controller;
@@ -19,10 +18,6 @@ public class TicTacToeView {
         System.out.println("3. BvB");
         System.out.print(" Option  1 - 3  : ");
     }
-
-//    public void afficherErreurMenu() {
-//        System.out.println(" Veuillez choisir entre 1 et 3 ");
-//    }
 
     public void afficherDemanderLigne() {
         System.out.print("Ligne ( 0 - 2 ) : ");
@@ -44,7 +39,7 @@ public class TicTacToeView {
         System.out.println(" Début de la partie ! ");
     }
 
-    public void afficherPlateau(Cell[][] board) {
+    public void afficherPlateau(Board board) {
         for (int i = 0; i < 3; i++) {
             System.out.println("-------------");
             for (int j = 0; j < 3; j++) {
@@ -104,7 +99,7 @@ afficherErreurSaisie() :
 afficherDebutPartie() :
 - Affiche le message de début de partie
 
-afficherPlateau(Board.Cell[][] tictactoe.board) :
+afficherPlateau(TicTacToeBoard.Cell[][] tictactoe.cells) :
 - Affiche l'état actuel du plateau
 
 afficherTourJoueur(Game.players.Player player) :

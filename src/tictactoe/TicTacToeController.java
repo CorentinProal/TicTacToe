@@ -1,22 +1,22 @@
-package gomoku;
+package tictactoe;
 
 import global.Board;
 import global.HumanPlayer;
 import global.ArtificialPlayer;
 import global.Player;
 
-public class GomokuController {
+public class TicTacToeController {
     private Player player1;
     private Player player2;
     private Player currentPlayer;
-    private GomokuLogic model;
-    private GomokuView view;
-    private Board board;
+    private final TicTacToeLogic model;
+    private final TicTacToeView view;
+    private final Board board;
 
-    public GomokuController() {
-        this.board = new Board(15, 5);
-        this.model = new GomokuLogic(board);
-        this.view = new GomokuView(this);
+    public TicTacToeController() {
+        this.board = new Board(3, 3);
+        this.model = new TicTacToeLogic(board);
+        this.view = new TicTacToeView(this);
         currentPlayer = player1;
     }
 
@@ -55,7 +55,7 @@ public class GomokuController {
             }
 
             if (model.isDraw()) {
-                view.afficherPlateau(model.getBoard().getCells());
+                view.afficherPlateau(board);
 //                view.afficherMatchNul();
                 break;
             }
@@ -66,23 +66,23 @@ public class GomokuController {
     }
 
     public void createHumanVsHuman() {
-        return new GomokuController(
+        return new TicTacToeController(
             player1 = new HumanPlayer(" X "),
             player2 = new HumanPlayer(" O ")
         );
     }
 
     public void createHumanVsAI() {
-        return new GomokuController(
+        return new TicTacToeController(
                 player1 = new HumanPlayer(" X "),
                 player2 = new ArtificialPlayer(" O ")
         );
     }
 
     public void createAIVsAI() {
-        return new GomokuController(
-                player1 = new ArtificialPlayer(" X "),
-                player2 = new ArtificialPlayer(" O ")
+        return new TicTacToeController(
+            player1 = new ArtificialPlayer(" X "),
+            player2 = new ArtificialPlayer(" O ")
         );
     }
 } 
