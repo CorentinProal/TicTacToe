@@ -16,30 +16,29 @@ public class GomokuController {
 
     public void startGame() {
         view.afficherDebutPartie();
-        
-        while (!model.isOver()) {
-            view.afficherPlateau(model.getBoard());
+
+        while (!model.isGameOver()) {
+            view.afficherPlateau(model.getBoard().getCells());
             view.afficherTourJoueur(model.getCurrentPlayer());
-            
+
             int[] move;
             do {
                 view.afficherDemanderLigne();
                 view.afficherDemanderColonne();
                 move = model.getCurrentPlayer().getMove(model);
-                
                 if (!model.isValidMove(move)) {
-                    view.afficherErreurCoup();
+                    view.afficherErreurSaisie();
                 }
             } while (!model.isValidMove(move));
-            
+
             model.setOwner(move, model.getCurrentPlayer());
-            
-            if (model.isOver()) {
-                view.afficherPlateau(model.getBoard());
+
+            if (model.isOver(move[0], move[1], model.getCurrentPlayer().getCellState())) {
+                view.afficherPlateau(model.getBoard().getCells());
                 view.afficherVictoire(model.getCurrentPlayer());
                 break;
             }
-            
+
             model.switchPlayer();
         }
         view.afficherFinPartie();

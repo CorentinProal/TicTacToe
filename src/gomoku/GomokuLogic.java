@@ -1,22 +1,25 @@
 package gomoku;
 
 import gomoku.players.GomokuPlayer;
-import tictactoe.model.BoardGame;
 import tictactoe.model.CellState;
+import tictactoe.model.players.Player;
 
-public class GomokuLogic extends BoardGame {
+public class GomokuLogic {
     private GomokuPlayer currentPlayer;
     private GomokuPlayer player1;
     private GomokuPlayer player2;
+    private final GomokuBoard board;
+    private boolean isOver;
 
     public GomokuLogic(GomokuPlayer player1, GomokuPlayer player2) {
-        super(15); // Gomoku se joue sur un plateau 15x15
+        this.board = new GomokuBoard();
         this.player1 = player1;
         this.player2 = player2;
         currentPlayer = player1;
+        isOver = false;
     }
 
-    public GomokuPlayer getCurrentPlayer() {
+    public Player getCurrentPlayer() {
         return currentPlayer;
     }
 
@@ -24,82 +27,72 @@ public class GomokuLogic extends BoardGame {
         currentPlayer = (currentPlayer == player1) ? player2 : player1;
     }
 
-    public void setOwner(int[] move, GomokuPlayer player) {
-        CellState newState = player.getRepresentation().equals(" X ") ? CellState.X : CellState.O;
-        board[move[0]][move[1]].setState(newState);
+    public void setOwner(int[] move, Player player) {
+        board.getCell(move[0], move[1]).setState(player.getSymbol());
     }
 
-    @Override
     public boolean isValidMove(int[] move) {
-        return move[0] >= 0 && move[0] < size &&
-                move[1] >= 0 && move[1] < size &&
-                board[move[0]][move[1]].isEmpty();
+        boolean valid = move[0] >= 0 && move[0] < board.getSize() &&
+                move[1] >= 0 && move[1] < board.getSize() &&
+                board.getCell(move[0], move[1]).isEmpty();
+        if (!valid) {
+            System.out.println("Débogage : le coup [" + move[0] + ", " + move[1] + "] est invalide.");
+        }
+        return valid;
     }
 
-    @Override
-    public boolean isOver() {
-        // Vérification des lignes
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j <= size - 5; j++) {
-                if (!board[i][j].isEmpty() &&
-                        board[i][j].getState() == board[i][j + 1].getState() &&
-                        board[i][j].getState() == board[i][j + 2].getState() &&
-                        board[i][j].getState() == board[i][j + 3].getState() &&
-                        board[i][j].getState() == board[i][j + 4].getState()) {
-                    return true;
-                }
-            }
-        }
-
-
-        for (int j = 0; j < size; j++) {
-            for (int i = 0; i <= size - 5; i++) {
-                if (!board[i][j].isEmpty() &&
-                        board[i][j].getState() == board[i + 1][j].getState() &&
-                        board[i][j].getState() == board[i + 2][j].getState() &&
-                        board[i][j].getState() == board[i + 3][j].getState() &&
-                        board[i][j].getState() == board[i + 4][j].getState()) {
-                    return true;
-                }
-            }
-        }
-
-        // Vérification des diagonales principales (\)
-        for (int i = 0; i <= size - 5; i++) {
-            for (int j = 0; j <= size - 5; j++) {
-                if (!board[i][j].isEmpty() &&
-                        board[i][j].getState() == board[i + 1][j + 1].getState() &&
-                        board[i][j].getState() == board[i + 2][j + 2].getState() &&
-                        board[i][j].getState() == board[i + 3][j + 3].getState() &&
-                        board[i][j].getState() == board[i + 4][j + 4].getState()) {
-                    return true;
-                }
-            }
-        }
-
-        // Vérification des diagonales secondaires (/)
-        for (int i = 0; i <= size - 5; i++) {
-            for (int j = 4; j < size; j++) {
-                if (!board[i][j].isEmpty() &&
-                        board[i][j].getState() == board[i + 1][j - 1].getState() &&
-                        board[i][j].getState() == board[i + 2][j - 2].getState() &&
-                        board[i][j].getState() == board[i + 3][j - 3].getState() &&
-                        board[i][j].getState() == board[i + 4][j - 4].getState()) {
-                    return true;
-                }
-            }
-        }
-
-        // Vérification d'un match nul
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (board[i][j].isEmpty()) {
-                    return false;
-                }
-            }
-        }
-
-        return true;
+    public boolean isDraw(GomokuBoard gomokuBoard) {
+        return gomokuBoard.isFull();
     }
 
+    public boolean isOver(int row, int col, CellState state) {
+        int winnerRange = board.getWinnerRange();
+
+        // Vérifier la ligne
+        if (checkDirection(row, col, state, 0, 1, winnerRange)) return true; // Horizontal
+        // Vérifier la colonne
+        if (checkDirection(row, col, state, 1, 0, winnerRange)) return true; // Vertical
+        // Vérifier diagonale principale
+        if (checkDirection(row, col, state, 1, 1, winnerRange)) return true; // Diagonale principale
+        // Vérifier diagonale secondaire
+        if (checkDirection(row, col, state, 1, -1, winnerRange)) return true; // Diagonale secondaire
+
+        return false;
+    }
+
+    // Méthode pour vérifier une direction spécifique (horizontal, vertical, diagonale)
+    private boolean checkDirection(int row, int col, CellState state, int dRow, int dCol, int winnerRange) {
+        int count = 1; // La case actuelle compte déjà pour 1
+
+        // Compter les cases dans la direction positive (dRow, dCol)
+        for (int i = 1; i < winnerRange; i++) {
+            int newRow = row + i * dRow;
+            int newCol = col + i * dCol;
+            if (newRow < 0 || newRow >= board.getSize() || newCol < 0 || newCol >= board.getSize() ||
+                    !board.getCell(newRow, newCol).getState().equals(state)) {
+                break;
+            }
+            count++;
+        }
+
+        // Compter les cases dans la direction négative (-dRow, -dCol)
+        for (int i = 1; i < winnerRange; i++) {
+            int newRow = row - i * dRow;
+            int newCol = col - i * dCol;
+            if (newRow < 0 || newRow >= board.getSize() || newCol < 0 || newCol >= board.getSize() ||
+                    !board.getCell(newRow, newCol).getState().equals(state)) {
+                break;
+            }
+            count++;
+        }
+        return count >= winnerRange;
+    }
+
+    public GomokuBoard getBoard() {
+        return board;
+    }
+
+    public boolean isGameOver() {
+        return isOver;
+    }
 }

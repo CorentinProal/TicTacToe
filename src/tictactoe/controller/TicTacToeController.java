@@ -18,8 +18,8 @@ public class TicTacToeController {
     public void startGame() {
         view.afficherDebutPartie();
 
-        while (!model.isOver()) {
-            view.afficherPlateau(model.getBoard());
+        while (!model.isGameOver()) {
+            view.afficherPlateau(model.getBoard().getCells());
             view.afficherTourJoueur(model.getCurrentPlayer());
 
             int[] move;
@@ -34,8 +34,8 @@ public class TicTacToeController {
 
             model.setOwner(move, model.getCurrentPlayer());
 
-            if (model.isOver()) {
-                view.afficherPlateau(model.getBoard());
+            if (model.isOver(move[0], move[1], model.getCurrentPlayer().getCellState())) {
+                view.afficherPlateau(model.getBoard().getCells());
                 view.afficherVictoire(model.getCurrentPlayer());
                 break;
             }
@@ -44,9 +44,6 @@ public class TicTacToeController {
         }
         view.afficherFinPartie();
     }
-
-
-
 
     public TicTacToeLogic getModel() {
         return model;

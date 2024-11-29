@@ -1,6 +1,6 @@
 //package demo;
 //
-//import tictactoe.model.Board;
+//import tictactoe.model.TicTacToeBoard;
 //
 //public class AIPlayer extends Player {
 //
@@ -9,15 +9,15 @@
 //    }
 //
 //    @Override
-//    public Position getMove(Board board) {
-//        Position pos = super.getMove(board);
-//        while(testPos(board, pos)<50){
-//            pos = super.getMove(board);
+//    public Position getMove(TicTacToeBoard cells) {
+//        Position pos = super.getMove(cells);
+//        while(testPos(cells, pos)<50){
+//            pos = super.getMove(cells);
 //        }
 //        return pos;
 //    }
 //
-//    private int testPos(Board board, Position pos) {
+//    private int testPos(TicTacToeBoard cells, Position pos) {
 //        int score = 60;
 //        return score;// à calculer
 //    }

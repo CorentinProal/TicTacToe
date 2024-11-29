@@ -8,11 +8,11 @@
 //        System.out.println("Game Start!");
 //    }
 //
-//    public void displayBoard(Cell[][] board) {
+//    public void displayBoard(Cell[][] cells) {
 //        for (int i = 0; i < 3; i++) {
 //            System.out.println("-------------");
 //            for (int j = 0; j < 3; j++) {
-//                System.out.print("|" + board[i][j].getRepresentation());
+//                System.out.print("|" + cells[i][j].getRepresentation());
 //            }
 //            System.out.println("|");
 //        }

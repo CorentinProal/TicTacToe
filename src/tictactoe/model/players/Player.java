@@ -18,6 +18,10 @@ public abstract class Player<T> {
         return symbol;
     }
 
+    public CellState getCellState() {
+        return symbol;
+    }
+
     public abstract int[] getMove(T logic);
 
     public abstract int[] getMove(TicTacToeLogic logic);

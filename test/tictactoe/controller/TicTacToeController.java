@@ -17,7 +17,7 @@
 //        view.displayStartMessage();
 //
 //        while (!model.isOver()) {
-//            view.displayBoard(model.getBoard());
+//            view.displayBoard(model.getCells());
 //            view.displayCurrentPlayer(model.getCurrentPlayer());
 //
 //            int[] move;

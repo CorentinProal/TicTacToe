@@ -63,6 +63,10 @@ public class GomokuView {
         System.out.println("\nAu tour du joueur" + player.getRepresentation());
     }
 
+    public void afficherErreurSaisie() {
+        System.out.println("Veuillez entrer un nombre entre 0 et 14 !");
+    }
+
     public void afficherVictoire(Player player) {
         System.out.println(" Le joueur " + player.getRepresentation() + " a gagné ! ");
     }

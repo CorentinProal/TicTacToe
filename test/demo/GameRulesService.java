@@ -1,12 +1,12 @@
 //package demo;
 //
-//import tictactoe.model.Board;
+//import tictactoe.model.TicTacToeBoard;
 //
 //public class GameRulesService {
 //
-//    public static Position getMove(Board board, PosStrategies strategy) {
-//        int row = strategy.getPosition(board.getSize());
-//        int col = strategy.getPosition(board.getSize());
+//    public static Position getMove(TicTacToeBoard cells, PosStrategies strategy) {
+//        int row = strategy.getPosition(cells.getSIZE());
+//        int col = strategy.getPosition(cells.getSIZE());
 //        return new Position(row, col);
 //    }
 //}

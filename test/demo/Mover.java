@@ -1,7 +1,7 @@
 //package demo;
 //
-//import tictactoe.model.Board;
+//import tictactoe.model.TicTacToeBoard;
 //
 //public interface Mover {
-//    Position getMove(Board board);
+//    Position getMove(TicTacToeBoard cells);
 //}

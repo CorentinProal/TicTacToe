@@ -1,25 +1,25 @@
 //package tictactoe.model;
 //
-//public abstract class BoardGame {
-//    protected Cell[][] board;
-//    protected final int size;
+//public abstract class TicTacToeBoard {
+//    protected Cell[][] cells;
+//    protected final int SIZE;
 //
-//    public BoardGame(int size) {
-//        this.size = size;
-//        this.board = new Cell[size][size];
-//        for (int i = 0; i < size; i++) {
-//            for (int j = 0; j < size; j++) {
-//                board[i][j] = new Cell();
+//    public TicTacToeBoard(int SIZE) {
+//        this.SIZE = SIZE;
+//        this.cells = new Cell[SIZE][SIZE];
+//        for (int i = 0; i < SIZE; i++) {
+//            for (int j = 0; j < SIZE; j++) {
+//                cells[i][j] = new Cell();
 //            }
 //        }
 //    }
 //
 //    public boolean exist(int row, int col) {
-//        return row >= 0 && row < size && col >= 0 && col < size;
+//        return row >= 0 && row < SIZE && col >= 0 && col < SIZE;
 //    }
 //
-//    public Cell[][] getBoard() {
-//        return board;
+//    public Cell[][] getCells() {
+//        return cells;
 //    }
 //
 //    public abstract boolean isValidMove(int[] move);
