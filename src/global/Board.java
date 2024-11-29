@@ -44,8 +44,8 @@ public class Board {
         return row >= 0 && row < SIZE && col >= 0 && col < SIZE;
     }
 
-    public Board getCells() {
-        return cells[row][col];
+    public Cell[][] getCells() {
+        return cells;
     }
 
 }

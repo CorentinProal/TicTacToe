@@ -1,17 +1,15 @@
 package global;
 
 public enum CellState {
-    EMPTY("   "),
-    X(" X "),
-    O(" O ");
+    EMPTY("   "), X(" X "), O(" O ");
 
-    private final String rep;
+    private final String representation;
 
     CellState(String representation) {
-        this.rep = representation;
+        this.representation = representation;
     }
 
     public String getRep() {
-        return rep;
+        return representation;
     }
 } 

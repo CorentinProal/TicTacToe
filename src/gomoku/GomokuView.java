@@ -1,12 +1,14 @@
 package gomoku;
 
+import global.Board;
 import global.Cell;
 import global.Player;
+import global.GlobalController;
 
 public class GomokuView {
-    private GomokuController controller;
+    private GlobalController controller;
 
-    public GomokuView(GomokuController controller) {
+    public GomokuView(GlobalController controller) {
         this.controller = controller;
     }
 
@@ -40,15 +42,16 @@ public class GomokuView {
         System.out.println(" Début de la partie ! ");
     }
 
-    public void afficherPlateau(Cell[][] board) {
-        int size = 15;
+    public void afficherPlateau(Board board) {
+        Cell[][] cells = board.getCells();
+        int size = cells.length;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 System.out.print("----");
             }
             System.out.println();
             for (int j = 0; j < size; j++) {
-                System.out.print("|" + board[i][j].getRepresentation());
+                System.out.print("|" + cells[i][j].getRepresentation());
             }
             System.out.println("|");
         }
@@ -72,6 +75,10 @@ public class GomokuView {
 
     public void afficherFinPartie() {
         System.out.println(" Fin de partie ! ");
+    }
+
+    public void afficherMatchNul() {
+        System.out.println("C'est un match nul !");
     }
 
     public static void afficherCoupOrdinateur() {

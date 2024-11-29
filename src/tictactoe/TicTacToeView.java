@@ -1,12 +1,14 @@
 package tictactoe;
 
 import global.Board;
+import global.Cell;
+import global.GlobalController;
 import global.Player;
 
 public class TicTacToeView {
-    private final TicTacToeController controller;
+    private final GlobalController controller;
 
-    public TicTacToeView(TicTacToeController controller) {
+    public TicTacToeView(GlobalController controller) {
         this.controller = controller;
     }
 
@@ -40,10 +42,11 @@ public class TicTacToeView {
     }
 
     public void afficherPlateau(Board board) {
+        Cell[][] cells = board.getCells();
         for (int i = 0; i < 3; i++) {
             System.out.println("-------------");
             for (int j = 0; j < 3; j++) {
-                System.out.print("|" + board[i][j].getRepresentation());
+                System.out.print("|" + cells[i][j].getRepresentation());
             }
             System.out.println("|");
         }
@@ -62,55 +65,11 @@ public class TicTacToeView {
         System.out.println(" Fin de partie ! ");
     }
 
+    public void afficherMatchNul() {
+        System.out.println("C'est un match nul !");
+    }
+
     public static void afficherCoupOrdinateur() {
         System.out.println("L'ordinateur joue...");
     }
 }
-
-
-/*
-Cette classe gère l'interface utilisateur du jeu TicTacToe.
-
-ATTRIBUTS :
-- controller : instance de Game.controllers.TicTacToeController qui gère la logique du jeu
-
-CONSTRUCTEUR :
-- Initialise une nouvelle instance de Game.controllers.TicTacToeController
-
-MÉTHODES :
-afficherMenuPrincipal() :
-- Affiche le menu principal du jeu
-
-afficherErreurMenu() :
-- Affiche le message d'erreur pour un choix de menu invalide
-
-afficherDemanderLigne() :
-- Affiche le message pour demander la ligne d'un coup
-
-afficherDemanderColonne() :
-- Affiche le message pour demander la colonne d'un coup
-
-afficherErreurCoup() :
-- Affiche le message d'erreur pour un coup invalide
-
-afficherErreurSaisie() :
-- Affiche le message d'erreur pour une saisie invalide
-
-afficherDebutPartie() :
-- Affiche le message de début de partie
-
-afficherPlateau(TicTacToeBoard.Cell[][] tictactoe.cells) :
-- Affiche l'état actuel du plateau
-
-afficherTourJoueur(Game.players.Player player) :
-- Affiche le message pour le joueur actuel
-
-afficherVictoire(Game.players.Player player) :
-- Affiche le message pour le joueur gagnant
-
-afficherFinPartie() :
-- Affiche le message pour la fin de partie
-
-afficherCoupOrdinateur() :
-- Affiche le message pour le coup de l'ordinateur
-*/

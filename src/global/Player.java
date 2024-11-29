@@ -1,29 +1,27 @@
 package global;
 
-import tictactoe.TicTacToeLogic;
-
-public abstract class Player<T> {
-    private final CellState symbol;
+public abstract class Player {
+    private String representation;
 
     public Player(String representation) {
-        this.symbol = representation.trim().equals("X") ? CellState.X : CellState.O;
+        this.representation = representation;
     }
 
     public String getRepresentation() {
-        return symbol.getRep();
-    }
-
-    public CellState getSymbol() {
-        return symbol;
+        return representation;
     }
 
     public CellState getCellState() {
-        return symbol;
+        if (representation.trim().equals("X")) {
+            return CellState.X;
+        } else if (representation.trim().equals("O")) {
+            return CellState.O;
+        } else {
+            return CellState.EMPTY;
+        }
     }
 
-    public abstract int[] getMove(T logic);
-
-    public abstract int[] getMove(TicTacToeLogic logic);
+    public abstract int[] getMove(Board board);
 }
 
 /*
