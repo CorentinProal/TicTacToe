@@ -1,16 +1,18 @@
 package tictactoe.model;
 
+import global.Board;
+import global.CellState;
 import tictactoe.model.players.Player;
 
 public class TicTacToeLogic {
     private Player currentPlayer;
     private final Player player1;
     private final Player player2;
-    private final TicTacToeBoard ticTacToeBoard;
+    private final Board board;
     private boolean isOver;
 
     public TicTacToeLogic(Player player1, Player player2) {
-        this.ticTacToeBoard = new TicTacToeBoard();
+        this.board = new Board(3,3);
         this.player1 = player1;
         this.player2 = player2;
         currentPlayer = player1;
@@ -26,13 +28,13 @@ public class TicTacToeLogic {
     }
 
     public void setOwner(int[] move, Player player) {
-        ticTacToeBoard.getCell(move[0], move[1]).setState(player.getSymbol());
+        board.getCell(move[0], move[1]).setState(player.getSymbol());
     }
 
     public boolean isValidMove(int[] move) {
-        boolean valid = move[0] >= 0 && move[0] < ticTacToeBoard.getSize() &&
-                move[1] >= 0 && move[1] < ticTacToeBoard.getSize() &&
-                ticTacToeBoard.getCell(move[0], move[1]).isEmpty();
+        boolean valid = move[0] >= 0 && move[0] < board.getSize() &&
+                move[1] >= 0 && move[1] < board.getSize() &&
+                board.getCell(move[0], move[1]).isEmpty();
         if (!valid) {
             System.out.println("Débogage : le coup [" + move[0] + ", " + move[1] + "] est invalide.");
         }
@@ -44,7 +46,7 @@ public class TicTacToeLogic {
     }
 
     public boolean isOver(int row, int col, CellState state) {
-        int winnerRange = ticTacToeBoard.getWinnerRange();
+        int winnerRange = board.getWinnerRange();
 
         // Vérifier la ligne
         if (checkDirection(row, col, state, 0, 1, winnerRange)) return true; // Horizontal
@@ -66,8 +68,8 @@ public class TicTacToeLogic {
         for (int i = 1; i < winnerRange; i++) {
             int newRow = row + i * dRow;
             int newCol = col + i * dCol;
-            if (newRow < 0 || newRow >= ticTacToeBoard.getSize() || newCol < 0 || newCol >= ticTacToeBoard.getSize() ||
-                    !ticTacToeBoard.getCell(newRow, newCol).getState().equals(state)) {
+            if (newRow < 0 || newRow >= board.getSize() || newCol < 0 || newCol >= board.getSize() ||
+                    !board.getCell(newRow, newCol).getState().equals(state)) {
                 break;
             }
             count++;
@@ -77,8 +79,8 @@ public class TicTacToeLogic {
         for (int i = 1; i < winnerRange; i++) {
             int newRow = row - i * dRow;
             int newCol = col - i * dCol;
-            if (newRow < 0 || newRow >= ticTacToeBoard.getSize() || newCol < 0 || newCol >= ticTacToeBoard.getSize() ||
-                    !ticTacToeBoard.getCell(newRow, newCol).getState().equals(state)) {
+            if (newRow < 0 || newRow >= board.getSize() || newCol < 0 || newCol >= board.getSize() ||
+                    !board.getCell(newRow, newCol).getState().equals(state)) {
                 break;
             }
             count++;
@@ -86,11 +88,11 @@ public class TicTacToeLogic {
         return count >= winnerRange;
     }
 
-    public TicTacToeBoard getBoard() {
-        return ticTacToeBoard;
-    }
-
     public boolean isGameOver() {
         return isOver;
+    }
+
+    public Board getBoard() {
+        return board;
     }
 }

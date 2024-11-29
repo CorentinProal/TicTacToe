@@ -1,6 +1,6 @@
 package tictactoe.model.players;
 
-import tictactoe.model.CellState;
+import global.CellState;
 import tictactoe.model.TicTacToeLogic;
 
 public abstract class Player<T> {

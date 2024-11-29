@@ -1,14 +1,14 @@
-package gomoku;
+package global;
 
-import tictactoe.model.Cell;
-
-public class GomokuBoard {
-    private final int SIZE = 15;
+public class Board {
+    private final int SIZE;
     private Cell[][] cells;
-    private int winnerRange = 5;
+    private int winnerRange;
 
 
-    public GomokuBoard() {
+    public Board(int size, int winnerRange) {
+        this.SIZE = size ;
+        this.winnerRange = winnerRange;
         cells = new Cell[SIZE][SIZE];
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {

@@ -1,18 +1,19 @@
 package gomoku;
 
+import global.Board;
 import gomoku.players.GomokuPlayer;
-import tictactoe.model.CellState;
+import global.CellState;
 import tictactoe.model.players.Player;
 
 public class GomokuLogic {
     private GomokuPlayer currentPlayer;
     private GomokuPlayer player1;
     private GomokuPlayer player2;
-    private final GomokuBoard board;
+    private final Board board;
     private boolean isOver;
 
     public GomokuLogic(GomokuPlayer player1, GomokuPlayer player2) {
-        this.board = new GomokuBoard();
+        this.board = new Board(15,5);
         this.player1 = player1;
         this.player2 = player2;
         currentPlayer = player1;
@@ -41,8 +42,8 @@ public class GomokuLogic {
         return valid;
     }
 
-    public boolean isDraw(GomokuBoard gomokuBoard) {
-        return gomokuBoard.isFull();
+    public boolean isDraw(Board board) {
+        return board.isFull();
     }
 
     public boolean isOver(int row, int col, CellState state) {
@@ -88,7 +89,7 @@ public class GomokuLogic {
         return count >= winnerRange;
     }
 
-    public GomokuBoard getBoard() {
+    public Board getBoard() {
         return board;
     }
 

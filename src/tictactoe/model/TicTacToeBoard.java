@@ -1,5 +1,7 @@
 package tictactoe.model;
 
+import global.Cell;
+
 public class TicTacToeBoard {
     private final int SIZE = 3;
     private Cell[][] cells;

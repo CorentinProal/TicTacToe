@@ -1,6 +1,6 @@
 //package tictactoe.view;
 //
-//import tictactoe.model.Cell;
+//import global.Cell;
 //import tictactoe.model.players.Player;
 //
 //public class TicTacToeView {

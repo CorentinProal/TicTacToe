@@ -1,6 +1,6 @@
 package gomoku.board;
 
-import tictactoe.model.Cell;
+import global.Cell;
 import tictactoe.model.players.Player;
 import gomoku.GomokuController;
 
