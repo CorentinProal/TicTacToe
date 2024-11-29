@@ -1,8 +1,7 @@
-package gomoku.board;
+package gomoku;
 
 import global.Cell;
-import tictactoe.model.players.Player;
-import gomoku.GomokuController;
+import global.Player;
 
 public class GomokuView {
     private GomokuController controller;

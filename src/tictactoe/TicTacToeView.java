@@ -1,8 +1,7 @@
-package tictactoe.view;
+package tictactoe;
 
-import tictactoe.controller.TicTacToeController;
-import global.Cell;
-import tictactoe.model.players.Player;
+import global.Board;
+import global.Player;
 
 public class TicTacToeView {
     private final TicTacToeController controller;
@@ -40,7 +39,7 @@ public class TicTacToeView {
         System.out.println(" Début de la partie ! ");
     }
 
-    public void afficherPlateau(Cell[][] board) {
+    public void afficherPlateau(Board board) {
         for (int i = 0; i < 3; i++) {
             System.out.println("-------------");
             for (int j = 0; j < 3; j++) {

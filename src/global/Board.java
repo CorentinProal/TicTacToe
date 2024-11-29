@@ -21,8 +21,8 @@ public class Board {
         return SIZE;
     }
 
-    public Cell getCell(int newRow, int newCol) {
-        return cells[newRow][newCol];
+    public Cell getCell(int row, int col) {
+        return cells[row][col];
     }
 
     public int getWinnerRange(){
@@ -44,8 +44,8 @@ public class Board {
         return row >= 0 && row < SIZE && col >= 0 && col < SIZE;
     }
 
-    public Cell[][] getCells() {
-        return cells;
+    public Board getCells() {
+        return cells[row][col];
     }
 
 }

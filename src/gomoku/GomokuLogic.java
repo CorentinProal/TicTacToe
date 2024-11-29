@@ -1,35 +1,19 @@
 package gomoku;
 
 import global.Board;
-import gomoku.players.GomokuPlayer;
 import global.CellState;
-import tictactoe.model.players.Player;
 
 public class GomokuLogic {
-    private GomokuPlayer currentPlayer;
-    private GomokuPlayer player1;
-    private GomokuPlayer player2;
     private final Board board;
     private boolean isOver;
 
-    public GomokuLogic(GomokuPlayer player1, GomokuPlayer player2) {
-        this.board = new Board(15,5);
-        this.player1 = player1;
-        this.player2 = player2;
-        currentPlayer = player1;
+    public GomokuLogic(Board board) {
+        this.board = board;
         isOver = false;
     }
 
-    public Player getCurrentPlayer() {
-        return currentPlayer;
-    }
-
-    public void switchPlayer() {
-        currentPlayer = (currentPlayer == player1) ? player2 : player1;
-    }
-
-    public void setOwner(int[] move, Player player) {
-        board.getCell(move[0], move[1]).setState(player.getSymbol());
+    public void setOwner(int[] move, CellState symbol) {
+        board.getCell(move[0], move[1]).setState(symbol);
     }
 
     public boolean isValidMove(int[] move) {
@@ -42,7 +26,7 @@ public class GomokuLogic {
         return valid;
     }
 
-    public boolean isDraw(Board board) {
+    public boolean isDraw() {
         return board.isFull();
     }
 
@@ -61,11 +45,8 @@ public class GomokuLogic {
         return false;
     }
 
-    // Méthode pour vérifier une direction spécifique (horizontal, vertical, diagonale)
     private boolean checkDirection(int row, int col, CellState state, int dRow, int dCol, int winnerRange) {
-        int count = 1; // La case actuelle compte déjà pour 1
-
-        // Compter les cases dans la direction positive (dRow, dCol)
+        int count = 1;
         for (int i = 1; i < winnerRange; i++) {
             int newRow = row + i * dRow;
             int newCol = col + i * dCol;
@@ -75,8 +56,6 @@ public class GomokuLogic {
             }
             count++;
         }
-
-        // Compter les cases dans la direction négative (-dRow, -dCol)
         for (int i = 1; i < winnerRange; i++) {
             int newRow = row - i * dRow;
             int newCol = col - i * dCol;
@@ -95,5 +74,9 @@ public class GomokuLogic {
 
     public boolean isGameOver() {
         return isOver;
+    }
+
+    public void setGameOver(boolean isOver) {
+        this.isOver = isOver;
     }
 }

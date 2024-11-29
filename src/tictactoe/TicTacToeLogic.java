@@ -1,34 +1,19 @@
-package tictactoe.model;
+package tictactoe;
 
 import global.Board;
 import global.CellState;
-import tictactoe.model.players.Player;
 
 public class TicTacToeLogic {
-    private Player currentPlayer;
-    private final Player player1;
-    private final Player player2;
     private final Board board;
     private boolean isOver;
 
-    public TicTacToeLogic(Player player1, Player player2) {
-        this.board = new Board(3,3);
-        this.player1 = player1;
-        this.player2 = player2;
-        currentPlayer = player1;
+    public TicTacToeLogic(Board board) {
+        this.board = board;
         isOver = false;
     }
 
-    public Player getCurrentPlayer() {
-        return currentPlayer;
-    }
-
-    public void switchPlayer() {
-        currentPlayer = (currentPlayer == player1) ? player2 : player1;
-    }
-
-    public void setOwner(int[] move, Player player) {
-        board.getCell(move[0], move[1]).setState(player.getSymbol());
+    public void setOwner(int[] move, CellState symbol) {
+        board.getCell(move[0], move[1]).setState(symbol);
     }
 
     public boolean isValidMove(int[] move) {
@@ -41,8 +26,8 @@ public class TicTacToeLogic {
         return valid;
     }
 
-    public boolean isDraw(TicTacToeBoard ticTacToeBoard) {
-        return ticTacToeBoard.isFull();
+    public boolean isDraw() {
+        return board.isFull();
     }
 
     public boolean isOver(int row, int col, CellState state) {
@@ -60,11 +45,9 @@ public class TicTacToeLogic {
         return false;
     }
 
-    // Méthode pour vérifier une direction spécifique (horizontal, vertical, diagonale)
     private boolean checkDirection(int row, int col, CellState state, int dRow, int dCol, int winnerRange) {
         int count = 1; // La case actuelle compte déjà pour 1
-
-        // Compter les cases dans la direction positive (dRow, dCol)
+        // Compter dans la direction positive
         for (int i = 1; i < winnerRange; i++) {
             int newRow = row + i * dRow;
             int newCol = col + i * dCol;
@@ -74,8 +57,7 @@ public class TicTacToeLogic {
             }
             count++;
         }
-
-        // Compter les cases dans la direction négative (-dRow, -dCol)
+        // Compter dans la direction négative
         for (int i = 1; i < winnerRange; i++) {
             int newRow = row - i * dRow;
             int newCol = col - i * dCol;
@@ -90,6 +72,10 @@ public class TicTacToeLogic {
 
     public boolean isGameOver() {
         return isOver;
+    }
+
+    public void setGameOver(boolean isOver) {
+        this.isOver = isOver;
     }
 
     public Board getBoard() {
