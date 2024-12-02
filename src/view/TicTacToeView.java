@@ -1,37 +1,31 @@
-package tictactoe;
+package view;
 
-import global.Board;
-import global.Cell;
-import global.GlobalController;
-import global.Player;
+import model.Board;
+import model.Cell;
+import model.Player;
 
 public class TicTacToeView {
-    private final GlobalController controller;
 
-    public TicTacToeView(GlobalController controller) {
-        this.controller = controller;
-    }
+//    public static void afficherMenuPrincipal() {
+//        System.out.println("Go faire un petit Morpion !");
+//        System.out.println("Comment tu joues ?");
+//        System.out.println("1. PvP");
+//        System.out.println("2. PvB");
+//        System.out.println("3. BvB");
+//        System.out.print(" Option  1 - 3  : ");
+//    }
 
-    public static void afficherMenuPrincipal() {
-        System.out.println("Go faire un petit Morpion !");
-        System.out.println("Comment tu joues ?");
-        System.out.println("1. PvP");
-        System.out.println("2. PvB");
-        System.out.println("3. BvB");
-        System.out.print(" Option  1 - 3  : ");
-    }
-
-    public void afficherDemanderLigne() {
-        System.out.print("Ligne ( 0 - 2 ) : ");
-    }
-
-    public void afficherDemanderColonne() {
-        System.out.print("Colonne ( 0 - 2 ) : ");
-    }
-
-    public void afficherErreurCoup() {
-        System.out.println("Case déjà occupée ou position invalide !");
-    }
+//    public void afficherDemanderLigne() {
+//        System.out.print("Ligne ( 0 - 2 ) : ");
+//    }
+//
+//    public void afficherDemanderColonne() {
+//        System.out.print("Colonne ( 0 - 2 ) : ");
+//    }
+//
+//    public void afficherErreurCoup() {
+//        System.out.println("Case déjà occupée ou position invalide !");
+//    }
 
     public void afficherErreurSaisie() {
         System.out.println("Veuillez entrer un nombre entre 0 et 2 !");
@@ -69,7 +63,7 @@ public class TicTacToeView {
         System.out.println("C'est un match nul !");
     }
 
-    public static void afficherCoupOrdinateur() {
-        System.out.println("L'ordinateur joue...");
-    }
+//    public static void afficherCoupOrdinateur() {
+//        System.out.println("L'ordinateur joue...");
+//    }
 }

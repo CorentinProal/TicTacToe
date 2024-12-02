@@ -1,4 +1,4 @@
-package global;
+package controller;
 
 import java.util.Scanner;
 

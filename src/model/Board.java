@@ -1,4 +1,4 @@
-package global;
+package model;
 
 public class Board {
     private final int SIZE;

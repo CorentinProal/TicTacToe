@@ -1,4 +1,4 @@
-package global;
+package model;
 
 public enum CellState {
     EMPTY("   "), X(" X "), O(" O ");

@@ -1,7 +1,6 @@
-package global;
+package model;
 
-import tictactoe.UserInteract;
-import global.Board;
+import view.GlobalInteract;
 
 public class HumanPlayer extends Player {
     public HumanPlayer(String representation) {
@@ -11,6 +10,6 @@ public class HumanPlayer extends Player {
 
     @Override
     public int[] getMove(Board board) {
-        return UserInteract.obtenirCoupJoueur();
+        return GlobalInteract.obtenirCoupJoueur(board.getSize());
     }
 } 

@@ -1,4 +1,4 @@
-package global;
+package model;
 
 public abstract class Player {
     private String representation;
